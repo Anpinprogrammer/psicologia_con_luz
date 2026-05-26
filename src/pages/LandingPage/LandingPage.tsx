@@ -1,11 +1,10 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import FullScreen from '../../components/landing/FullScreen'
 import Services from '../../components/landing/Services'
 import ForYou from '../../components/landing/ForYou'
 import FaqBox from '../../components/landing/FaqBox'
 
-import { AB1, H1, H2, H3, PILLARS, T1, T2, AB2, TESTS, FAQS } from '../../utils'
+import { AB1, H1, H2, H3, PILLARS, T1, T2, TESTS, FAQS } from '../../utils'
 import './Landing.css'
 
 const LandingPage = () => {

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 
 import { STEPS, SERVICES, STEP_META, validate } from '../../utils';
 
@@ -15,7 +15,7 @@ import '../../components/formulario_cita/styles/Field.css'
 
 const FormularioCita = () => {
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const [step, setStep]   = useState(0);
     const [done, setDone]   = useState(false);
     const [errs, setErrs]   = useState({

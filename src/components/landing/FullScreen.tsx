@@ -1,4 +1,3 @@
-import React from 'react'
 import NavBar from '../layout/NavBar'
 import { Link as RouterLink } from 'react-router-dom'
 import { Link as ScrollerLink } from 'react-scroll'

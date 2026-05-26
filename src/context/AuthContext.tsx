@@ -24,24 +24,39 @@ const AuthContext = createContext<AuthContextType>({
   setUser: () => {},
   loading: false,
   signUp: async()=>({ error:null }),
-  signInWithGoogle: async(m: string) => {},
+  signInWithGoogle: async(_m: string) => {},
   signIn: async() => ({ error: null }),
   signOut: async () => {} 
 })
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
-  const [session, setSession] = useState<Session | null>(null)
+  const [, setSession] = useState<Session | null>(null)
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        setSession(session);
-        setUser(session?.user ?? null)
-      }
-    )
-  }, [])
+  useEffect(()=>{
+
+  const { data: { subscription } } = supabase.auth.onAuthStateChange(
+    
+    async(_event,session)=>{
+
+      setSession(session)
+
+      setUser(
+        session?.user ?? null
+      )
+
+    }
+
+  )
+
+  return ()=>{
+
+    subscription.unsubscribe()
+
+  }
+
+},[])
 
   const signIn = async (email: string, password: string) => {
     const { error } = await supabase.auth.signInWithPassword({

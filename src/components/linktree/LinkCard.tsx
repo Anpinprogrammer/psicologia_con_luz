@@ -1,4 +1,3 @@
-import React from 'react'
 import { type LinkItem } from '../../pages/linktree/linktree.types'
 import { ICON_BG } from '../../pages/linktree/linktree.constants'
 

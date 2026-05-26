@@ -1,4 +1,3 @@
-import React from 'react'
 import { FORYOU, FOR_ITEMS } from '../../utils'
 import { Link } from 'react-router-dom'
 import './styles/ForYou.css'

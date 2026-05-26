@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import type { LinkItem, ProfileData } from '../linktree/linktree.types'
 import { LOGO } from '../../utils'
 import LinkCard from '../../components/linktree/LinkCard'
@@ -69,10 +69,13 @@ const MOCK_LINKS: LinkItem[] = [
   },
 ]
 
-interface LinkPublicPageProps {
+/**
+ * interface LinkPublicPageProps {
   profile: ProfileData
   links:   LinkItem[]
 }
+ */
+
 
 /* ── Small reusable icons ── */
 const ShareIcon = () => (

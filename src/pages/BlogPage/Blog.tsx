@@ -1,6 +1,4 @@
-import React from "react";                                                                                                                    
-  import NavBar from "../../components/layout/NavBar";                                                                                          
-  import "./Blog.css";                                                                                                                          
+import NavBar from "../../components/layout/NavBar";                                                                                         import "./Blog.css";                                                                                                                          
                                                                                                                                               
   // Mock posts – replace with real data / API later
   const mockPosts = [

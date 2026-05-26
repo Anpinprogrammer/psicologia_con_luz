@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import type { LinkItem, ProfileData } from './linktree.types'
-import { DEFAULT_PROFILE, DEFAULT_LINKS, ICON_BG } from './linktree.constants'
+import { DEFAULT_PROFILE, DEFAULT_LINKS } from './linktree.constants'
 import { useDragSort } from './useDragSort'
 import LinkCard     from './LinkCard'
 import PhonePreview from './PhonePreview'

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router'
 import './AuthModal.css'
-import { useAuthContext, type AuthUser } from '../../context/AuthContext'
+import { useAuthContext } from '../../context/AuthContext'
 import { LOGO } from '../../utils'
 
 
@@ -48,18 +48,18 @@ interface LoginViewProps {
   onClose:  () => void;
 }
 
-const LoginView: React.FC<LoginViewProps> = ({ onSwitch, onClose }) => {
+const LoginView: React.FC<LoginViewProps> = ({ onSwitch }) => {
 
   const { signInWithGoogle, signIn } = useAuthContext()
   const navigate = useNavigate()
 
   const [email,    setEmail]    = useState('')
   const [password, setPassword] = useState('')
-  const [remember, setRemember] = useState(false)
+  //const [remember, setRemember] = useState(false)
   const [showPass, setShowPass] = useState(false)
   const [errors,   setErrors]   = useState<{ email?: string; password?: string }>({})
   const [loading,  setLoading]  = useState(false)
-  const [showGooglePicker, setShowGooglePicker] = useState(false)
+  //const [showGooglePicker, setShowGooglePicker] = useState(false)
 
 
   

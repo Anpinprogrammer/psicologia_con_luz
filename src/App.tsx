@@ -1,5 +1,4 @@
 import { Route, BrowserRouter, Routes } from 'react-router-dom'
-import { ClerkProvider } from '@clerk/react'
 import { AuthProvider } from './context/AuthContext'
 
 
