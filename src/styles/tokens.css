@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+
+:root {
+  --accent:    #364F6B;
+  --accentDark:   #243548;
+  --accentLight:  #E3EDF6;
+  --amber:        #C9843A;
+  --amberDark:    #A0621E;
+  --amberLight:   #FDF0E0;
+  --lavender:     #7C5CBF;
+  --lavLight:     #EDE8FA;
+  --cream:        #F8F7FD;
+  --warm:         #F2EFF9;
+  --dark:         #1E2030;
+  --mid:          #3A3D52;
+  --muted:        #787A90;
+  --border:       rgba(54,79,107,0.12);
+  --gold:         #C9843A;
+  --accentMid:    #4E7099;
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Nunito', sans-serif;
+  --radius-md: 10px;
+  --radius-pill: 50px;
+}

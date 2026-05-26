@@ -1,0 +1,343 @@
+/* ============================================================
+   LinkPublicPage.css
+   Importar tokens.css antes de este archivo
+   ============================================================ */
+
+/* ── PAGE ── */
+.lpp-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 80% 10%, rgba(200,185,240,.35) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 85%, rgba(180,210,240,.25) 0%, transparent 48%),
+    radial-gradient(ellipse at 90% 85%, rgba(220,195,245,.22) 0%, transparent 44%),
+    linear-gradient(145deg, #f8f7fd 0%, #f2eff9 35%, #edf0f8 65%, #f0f4fa 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1.2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background decorations */
+.lpp-deco {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.lpp-d1 { width:400px; height:400px; border:1px solid rgba(124,92,191,.08); top:-140px;  right:-120px; }
+.lpp-d2 { width:260px; height:260px; border:1px solid rgba(201,132,58,.07);  bottom:-90px; left:-70px;  }
+.lpp-d3 { width:180px; height:180px; border:1px solid rgba(124,92,191,.06); top:42%;     right:-60px;  }
+
+.lpp-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+.lpp-blob-1 { width:300px; height:300px; background:rgba(200,185,240,.28); top:-80px;  left:-60px;  }
+.lpp-blob-2 { width:250px; height:250px; background:rgba(201,132,58,.12);  bottom:0;   right:-40px; }
+
+/* ── TOAST ── */
+.lpp-toast {
+  position: fixed;
+  bottom: 1.8rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--dark);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 500;
+  font-family: var(--font-sans);
+}
+
+.lpp-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── HEADER ── */
+.lpp-header {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.lpp-logo img {
+  height: 28px;
+  object-fit: contain;
+}
+
+.lpp-share-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(124,92,191,.18);
+  border-radius: 50px;
+  padding: 0.4rem 0.95rem;
+  font-family: var(--font-sans);
+  font-size: 0.73rem;
+  font-weight: 700;
+  color: var(--mid);
+  cursor: pointer;
+  transition: all 0.2s;
+  backdrop-filter: blur(8px);
+}
+
+.lpp-share-btn:hover {
+  background: #fff;
+  border-color: var(--lavender);
+  color: var(--lavender);
+}
+
+/* ── PROFILE CARD ── */
+.lpp-profile {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(124,92,191,.14);
+  border-radius: 24px;
+  padding: 2rem 1.5rem 1.5rem;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1rem;
+  animation: lpp-fadeUp 0.55s ease forwards;
+}
+
+/* Avatar */
+.lpp-avatar-wrap {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.lpp-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--lavLight), var(--amberLight));
+  border: 3px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 28px rgba(124,92,191,.18);
+  overflow: hidden;
+}
+
+.lpp-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.lpp-avatar-initials {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--lavender);
+}
+
+.lpp-avatar-badge {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--lavender);
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Name + bio */
+.lpp-name {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: var(--dark);
+  margin-bottom: 0.35rem;
+  line-height: 1.2;
+}
+
+.lpp-title-tag {
+  display: inline-block;
+  background: var(--lavLight);
+  color: var(--lavender);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  margin-bottom: 0.65rem;
+}
+
+.lpp-bio {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.72;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+/* Stats */
+.lpp-stats {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-top: 1.2rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(124,92,191,.1);
+}
+
+.lpp-stat {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.lpp-stat:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background: rgba(124,92,191,.12);
+}
+
+.lpp-stat-n {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--amber);
+  line-height: 1;
+  display: block;
+}
+
+.lpp-stat-l {
+  font-size: 0.65rem;
+  color: var(--muted);
+  font-weight: 300;
+  margin-top: 0.2rem;
+  display: block;
+}
+
+/* ── LINKS ── */
+.lpp-links {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  position: relative;
+  z-index: 1;
+  margin-top: 1rem;
+}
+
+
+
+.lpp-links .lpp-link:nth-child(1) { animation-delay: .08s; }
+.lpp-links .lpp-link:nth-child(2) { animation-delay: .16s; }
+.lpp-links .lpp-link:nth-child(3) { animation-delay: .24s; }
+.lpp-links .lpp-link:nth-child(4) { animation-delay: .32s; }
+.lpp-links .lpp-link:nth-child(5) { animation-delay: .40s; }
+
+.lpp-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(124,92,191,0), rgba(124,92,191,.04));
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.lpp-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(124,92,191,.14);
+  border-color: rgba(124,92,191,.28);
+  background: rgba(255,255,255,.95);
+}
+
+.lpp-link:hover::before { opacity: 1; }
+
+
+
+/* ── FOOTER ── */
+.lpp-footer {
+  background: none;
+  margin-top: 2.2rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.lpp-footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255,255,255,.6);
+  border: 1px solid rgba(124,92,191,.12);
+  border-radius: 50px;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.72rem;
+  color: var(--mid);
+  font-weight: 400;
+  backdrop-filter: blur(8px);
+  margin-bottom: 0.7rem;
+}
+
+.lpp-footer-brand strong {
+  color: var(--lavender);
+  font-weight: 700;
+}
+
+.lpp-footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.lpp-footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.lpp-footer-links a:hover { color: var(--accent); }
+
+/* ── ANIMATION ── */
+@keyframes lpp-fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 520px) {
+  .lpp-page    { padding: 2rem 1rem 3rem; }
+  .lpp-profile { padding: 1.6rem 1.2rem 1.2rem; border-radius: 20px; }
+  .lpp-link    { border-radius: 14px; padding: 0.8rem 1rem; }
+  .lpp-name    { font-size: 1.25rem; }
+}

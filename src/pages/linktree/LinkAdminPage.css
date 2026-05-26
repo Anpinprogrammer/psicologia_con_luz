@@ -1,0 +1,300 @@
+/* ============================================================
+   LinkAdminPage.css
+   Importar tokens.css antes de este archivo
+   ============================================================ */
+
+/* ── ROOT ── */
+.la-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+/* ── TOP BAR ── */
+.la-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.5rem;
+  background: #fff;
+  border-bottom: 1px solid rgba(124, 92, 191, 0.13);
+  flex-shrink: 0;
+  z-index: 50;
+}
+
+.la-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.la-topbar-logo {
+  height: 28px;
+  object-fit: contain;
+}
+
+.la-topbar-divider {
+  width: 1px;
+  height: 18px;
+  background: rgba(124, 92, 191, 0.18);
+}
+
+.la-topbar-title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.la-topbar-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--lavLight);
+  color: var(--lavender);
+  padding: 0.2rem 0.55rem;
+  border-radius: 50px;
+}
+
+.la-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.la-saved-badge {
+  font-size: 0.73rem;
+  font-weight: 700;
+  color: #3B9B6E;
+  background: #EAF3DE;
+  padding: 0.28rem 0.7rem;
+  border-radius: 50px;
+}
+
+.la-btn-ghost {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accentLight);
+  border: 1px solid rgba(54, 79, 107, 0.2);
+  border-radius: 50px;
+  padding: 0.38rem 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  transition: all 0.2s;
+}
+
+.la-btn-ghost:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.la-btn-save {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--amber);
+  border: none;
+  border-radius: 50px;
+  padding: 0.42rem 1.2rem;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.22s;
+}
+
+.la-btn-save:hover {
+  background: var(--amberDark);
+  transform: translateY(-1px);
+}
+
+/* ── TWO-COLUMN LAYOUT ── */
+.la-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ── LEFT: EDITOR ── */
+.la-editor {
+  overflow-y: auto;
+  border-right: 1px solid rgba(124, 92, 191, 0.13);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(124, 92, 191, 0.15) transparent;
+}
+
+.la-section {
+  padding: 1.3rem 1.5rem;
+  border-bottom: 1px solid rgba(124, 92, 191, 0.1);
+}
+
+.la-section:last-child {
+  border-bottom: none;
+}
+
+.la-section-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--lavender);
+  margin-bottom: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.la-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(124, 92, 191, 0.12);
+}
+
+.la-section-hint {
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+/* Profile */
+.la-profile-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 0.9rem;
+}
+
+.la-avatar-preview {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--lavLight), var(--amberLight));
+  border: 2px solid rgba(124, 92, 191, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--lavender);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.la-avatar-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.la-avatar-url { flex: 1; }
+
+.la-avatar-hint {
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 0.3rem;
+}
+
+/* Fields */
+.la-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  margin-bottom: 0.75rem;
+}
+
+.la-field:last-child { margin-bottom: 0; }
+
+.la-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--mid);
+  letter-spacing: 0.02em;
+}
+
+.la-input {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--dark);
+  background: #fff;
+  border: 1.5px solid rgba(124, 92, 191, 0.16);
+  border-radius: 8px;
+  padding: 0.52rem 0.8rem;
+  outline: none;
+  width: 100%;
+  -webkit-appearance: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.la-input::placeholder {
+  color: var(--muted);
+  opacity: 0.45;
+  font-weight: 300;
+}
+
+.la-input:focus {
+  border-color: var(--lavender);
+  box-shadow: 0 0 0 3px rgba(124, 92, 191, 0.08);
+  background: #fff;
+}
+
+.la-textarea {
+  resize: none;
+  line-height: 1.55;
+  min-height: 54px;
+}
+
+/* Drag list */
+.la-drag-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Add button */
+.la-btn-add {
+  width: 100%;
+  padding: 0.6rem;
+  background: transparent;
+  border: 1.5px dashed rgba(124, 92, 191, 0.25);
+  border-radius: 11px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--lavender);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.la-btn-add:hover {
+  background: var(--lavLight);
+  border-color: var(--lavender);
+}
+
+/* ── RIGHT: PREVIEW COLUMN ── */
+.la-preview-col {
+  overflow-y: auto;
+  background: var(--cream);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1.5rem 1rem 2.5rem;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .la-layout { grid-template-columns: 1fr; }
+  .la-root   { height: auto; overflow: auto; }
+  .la-editor { max-height: none; }
+  .la-preview-col { border-top: 1px solid rgba(124, 92, 191, 0.12); }
+}

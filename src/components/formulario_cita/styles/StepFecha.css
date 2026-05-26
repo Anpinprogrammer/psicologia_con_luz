@@ -1,0 +1,34 @@
+.step2-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.date-strip{display:flex;gap:0.5rem;overflow-x:auto;padding-bottom:0.4rem;scrollbar-width:none}
+.date-strip::-webkit-scrollbar{display:none}
+.date-chip{
+  flex-shrink:0;min-width:58px;
+  border:1.5px solid rgba(124,92,191,0.15);border-radius:12px;
+  padding:0.55rem 0.6rem;cursor:pointer;text-align:center;
+  background:var(--cream);transition:all 0.2s;
+}
+.date-chip:hover{border-color:var(--amber)}
+.date-chip.selected{background:var(--accent);border-color:var(--accent);box-shadow:0 4px 12px rgba(54,79,107,0.22)}
+.dc-day{font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted)}
+.dc-num{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:var(--dark);line-height:1.1}
+.dc-mon{font-size:0.6rem;color:var(--muted);margin-top:1px}
+.date-chip.selected .dc-day,.date-chip.selected .dc-num,.date-chip.selected .dc-mon{color:#fff}
+
+.slots-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.45rem}
+.slot{
+  border:1.5px solid rgba(124,92,191,0.14);border-radius:10px;
+  padding:0.52rem 0;text-align:center;cursor:pointer;
+  font-size:0.78rem;font-weight:600;color:var(--mid);
+  background:var(--cream);transition:all 0.2s;
+}
+.slot:hover{border-color:var(--lavender);color:var(--lavender)}
+.slot.selected{background:var(--amber);border-color:var(--amber);color:#fff;box-shadow:0 3px 10px rgba(201,132,58,0.3)}
+.slot.unavailable{
+  opacity:0.35;cursor:not-allowed;
+  background:#f5f5f5;
+}
+.slot.off{opacity:0.3;cursor:not-allowed;background:#f0eef8}
+.slots-hint{font-size:0.7rem;color:var(--muted);font-weight:300;margin-top:0.6rem}
+
+.col-label{font-size:0.78rem;font-weight:700;color:var(--mid);margin-bottom:0.65rem;letter-spacing:0.02em}
+.col-label .req{color:var(--amber);margin-left:2px}

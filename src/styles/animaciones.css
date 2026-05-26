@@ -1,0 +1,91 @@
+@import './tokens.css';
+
+/* ── TAG (hero pill, light version) ── */
+.tag{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:rgba(124,92,191,0.08);
+  border:1px solid rgba(124,92,191,0.22);
+  color: var(--lavender);
+  font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;
+  padding:0.4rem 1.1rem;border-radius:50px;margin-bottom:1.8rem;
+}
+.tag::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background: var(--amber);flex-shrink:0;
+}
+.tag-light{
+  display:inline-block;
+  background: var(--lavLight);color: var(--lavender);
+  font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+  padding:0.34rem 0.95rem;border-radius:50px;margin-bottom:1.1rem;
+}
+.tag-inv{background:rgba(74,101,128,0.2);color:#afc3d4}
+
+/* ── SECTION TITLES ── */
+.st{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,3.8vw,3.5rem);
+  font-weight:500;line-height:1.16;
+  color: var(--dark);margin-bottom:1.4rem;
+}
+.st em{color: var(--amber);font-style:italic}
+.st-w{color:#fff}
+.sb{font-size:0.97rem;font-weight:300;color: var(--muted);line-height:1.88;max-width:540px}
+
+/* ── BUTTONS ── */
+.bg{
+  display:inline-flex;
+  align-items:center;
+  gap:0.45rem;
+  background: var(--accent);
+  color:#fff;
+  padding:0.82rem 2rem;
+  border-radius:6px;
+  font-family:'Nunito',sans-serif;
+  font-size:0.88rem;
+  font-weight:700;
+  letter-spacing:0.03em;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  transition: background .22s, transform .18s, box-shadow .22s;
+}
+.bg:hover{background: var(--accentDark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(50,70,87,.38)}
+
+.bg-amber{
+  display:inline-flex;align-items:center;gap:0.45rem;
+  background: var(--amber);color:#fff;
+  padding:0.82rem 2rem;border-radius:6px;
+  font-family:'Nunito',sans-serif;font-size:0.88rem;font-weight:700;
+  letter-spacing:0.03em;text-decoration:none;border:none;cursor:pointer;
+  transition:all .22s;
+}
+.bg-gold:hover{background:var(--amberDark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(176,154,114,.4)}
+
+.bo-w{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  border:1.5px solid rgba(74,101,128,0.35);color: var(--mid);background:rgba(255,255,255,0.7);
+  padding:0.8rem 2rem;border-radius:6px;
+  font-family:'Nunito',sans-serif;font-size:0.88rem;font-weight:600;
+  text-decoration:none;transition:all .22s;backdrop-filter:blur(6px);
+  cursor: pointer;
+}
+.bo-w:hover{background:#fff;border-color: var(--accent);color: var(--accent);transform:translateY(-1px);box-shadow:0 6px 20px rgba(74,101,128,0.15)}
+
+.bo{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  border:1.5px solid var(--accent);color: var(--accent);background:transparent;
+  padding:0.78rem 1.9rem;border-radius:6px;
+  font-family:'Nunito',sans-serif;font-size:0.88rem;font-weight:700;
+  text-decoration:none;transition:all .22s;
+}
+.bo:hover{background: var(--accent);color:#fff;transform:translateY(-2px)}
+
+.bw{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  background:#fff;color: var(--accent);
+  padding:0.82rem 2rem;border-radius:6px;
+  font-family:'Nunito',sans-serif;font-size:0.88rem;font-weight:700;
+  text-decoration:none;transition:all .22s;
+}
+.bw:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.18)}

@@ -1,0 +1,135 @@
+/* Google Fake Picker */
+.gp-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  border-radius: 20px;
+}
+
+.gp-window {
+  background: #fff;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  overflow: hidden;
+  font-family: 'Google Sans', sans-serif;
+}
+
+.gp-header {
+  padding: 1.5rem 1.5rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid #e8eaed;
+}
+
+.gp-signin-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #202124;
+  margin-top: 0.8rem;
+}
+
+.gp-domain {
+  font-size: 0.82rem;
+  color: #5f6368;
+  margin-top: 0.2rem;
+}
+
+.gp-accounts {
+  padding: 0.5rem 0;
+}
+
+.gp-account {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.75rem 1.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+  text-align: left;
+}
+
+.gp-account:hover { background: #f8f9fa; }
+
+.gp-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #4285F4;
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.gp-account-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.gp-account-name  { font-size: 0.88rem; font-weight: 500; color: #202124; }
+.gp-account-email { font-size: 0.78rem; color: #5f6368; }
+
+.gp-arrow { color: #5f6368; flex-shrink: 0; }
+
+.gp-add-account {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.75rem 1.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.88rem;
+  color: #202124;
+  transition: background 0.15s;
+}
+
+.gp-add-account:hover { background: #f8f9fa; }
+
+.gp-add-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #dadce0;
+  color: #5f6368;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.gp-footer {
+  padding: 0.9rem 1.2rem;
+  border-top: 1px solid #e8eaed;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: #5f6368;
+}
+
+.gp-footer a { color: #1a73e8; text-decoration: none; }
+.gp-footer a:hover { text-decoration: underline; }
+
+.gp-cancel {
+  margin-left: auto;
+  background: none;
+  border: none;
+  font-size: 0.78rem;
+  color: #1a73e8;
+  cursor: pointer;
+  font-weight: 500;
+}

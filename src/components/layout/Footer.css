@@ -1,0 +1,19 @@
+footer{background:#13161e;color:rgba(255,255,255,.48);padding:4rem 0 2rem}
+.footer-g{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;margin-bottom:3rem}
+.footer-logo img {
+  height:50px;
+  border-radius: 50%;
+  filter: invert(1);
+  margin-bottom: 5px;
+}
+.footer-brand img:not(.footer-logo img){height:34px;filter:brightness(0) invert(1);margin-bottom:1rem}
+.footer-brand p{font-size:0.83rem;line-height:1.76;max-width:260px}
+.emrg{margin-top:1.4rem}
+.emrg p{font-size:0.79rem;line-height:1.82}
+.emrg strong{color:rgba(255,255,255,.6)}
+.fc h4{color:#fff;font-size:0.77rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1rem}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:0.52rem}
+.fc a{color:rgba(255,255,255,.4);font-size:0.82rem;text-decoration:none;font-weight:300;transition:color .2s}
+.fc a:hover{color:var(--amber)}
+.footer-bot{border-top:1px solid rgba(255,255,255,.07);padding-top:1.5rem;display:flex;justify-content:space-between}
+.footer-bot p{font-size:0.74rem}

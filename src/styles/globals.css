@@ -1,0 +1,49 @@
+@import './tokens.css';
+
+*,*::before,*::after { 
+  box-sizing:border-box;
+  margin:0;
+  padding:0
+}
+html{scroll-behavior:smooth}
+body{
+  font-family: var(--font-sans);
+  background:var(--cream);
+  color:var(--dark);
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+  display:flex;flex-direction:column;
+}
+.container{max-width:1160px;margin:0 auto;padding:0 2.5rem}
+section{padding:5.5rem 0}
+
+@media (max-width: 960px) {
+  section {
+    padding: 4rem 0;
+  }
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(6px); }
+}
+/* FADE */
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+.fu{opacity:0;animation:fadeUp 0.7s ease forwards}
+.d1{animation-delay:.1s}.d2{animation-delay:.25s}
+.d3{animation-delay:.4s}.d4{animation-delay:.55s}.d5{animation-delay:.7s}
+
+.fade{animation:fadeIn 0.35s ease forwards}
