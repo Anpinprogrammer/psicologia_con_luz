@@ -1,5 +1,5 @@
 import { SVCS } from '../../utils'
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 
 import './styles/Services.css'
 
