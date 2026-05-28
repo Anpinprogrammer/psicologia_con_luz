@@ -75,7 +75,12 @@ const NavBar = ({ static: isStatic = false }: { static?: boolean }) => {
                       </li>
                       <li>
                         <ScrollLink to="services">
-                          Servicios
+                          Acompañamiento
+                        </ScrollLink>
+                      </li>
+                      <li>
+                        <ScrollLink to="packages">
+                          Planes
                         </ScrollLink>
                       </li>
                       <li>

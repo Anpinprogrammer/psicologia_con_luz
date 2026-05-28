@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import FullScreen from '../../components/landing/FullScreen'
 import Services from '../../components/landing/Services'
+import Packages from '../../components/landing/Packages'
 import ForYou from '../../components/landing/ForYou'
 import FaqBox from '../../components/landing/FaqBox'
 
@@ -45,6 +46,8 @@ const LandingPage = () => {
         </section>
 
         <Services />
+
+        <Packages />
 
         <ForYou />
 

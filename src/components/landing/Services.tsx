@@ -8,8 +8,8 @@ const Services = () => {
     <section className="svc-bg" id='services'>
         <div className="container">
           <div className="svc-hd">
-            <span className="tag-light">Nuestros servicios</span>
-            <h2 className="st">¿Cómo vamos a <em>sostenerte?</em></h2>
+            <span className="tag-light">Nuestro Acompañamiento</span>
+            <h2 className="st">¿Cómo puedo <em>acompañarte?</em></h2>
             <p className="sb">Cada servicio está diseñado para acompañarte de forma honesta, técnica y humana, según lo que tú y tu familia necesiten.</p>
           </div>
           <div className="svc-grid">
