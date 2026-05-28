@@ -9,14 +9,18 @@ const ForYou = () => {
           <div className="fy-g">
             <div>
               <span className="tag-light">¿Es para mí?</span>
-              <h2 className="st" style={{ marginBottom:"2rem" }}>Este espacio es<br /><em>para ti si…</em></h2>
+              <h2 className="st" style={{ marginBottom:"2rem" }}>El acompañamiento psicológico<br /><em>puede ayudarte si…</em></h2>
               <ul className="fy-list">
                 {FOR_ITEMS.map((x, i) => (
                   <li className="fy-item" key={i}>
-                    <div className="fy-dot" />
+                    {/**
+                     * <div className="fy-dot" />
+                     */}
                     <div>
                       <strong>{x.t}</strong>
+                      {/** 
                       <p>{x.d}</p>
+                      */}
                     </div>
                   </li>
                 ))}
@@ -26,7 +30,7 @@ const ForYou = () => {
                   to={'/agendar-cita'}
                   className='bg'
                 > 
-                  Agenda tu primera sesión →
+                  Comenzar mi proceso →
                 </Link>
               </div>
             </div>

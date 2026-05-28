@@ -1,4 +1,5 @@
 import { type StepMeta } from "../types";
+import { Heart, Brain, Leaf } from 'lucide-react';
 
 const LOGO   = "img/logo2.jpeg";
 const HERO   = "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/N1QyCV9DrYsFR4irNtOO/media/695d858dde2c147f3048c2af.png";
@@ -19,6 +20,37 @@ const SVCS = [
   { icon:"💑", name:"Acompañamiento a Parejas",            desc:"Trabajamos comunicación, patrones repetitivos y crisis evolutivas, promoviendo acuerdos más conscientes y una conexión sólida y auténtica.",                                                          price:"$98 USD",  dur:"Sesión virtual · 50 min", note:null },
   { icon:"🌙", name:"Asesoría en Sueño",                   desc:"Integramos la ciencia del sueño y crianza respetuosa para construir hábitos saludables y sostenibles, priorizando el descanso y la regulación emocional de la familia.",                             price:"$115 USD", dur:"Sesión virtual · 90 min", note:"No constituye psicoterapia infantil." },
 ];
+
+const packages = [
+    {
+      icon:
+        <Leaf style={{ color: "#5B6C7B" }}/>,
+      badge: '1 SESIÓN',
+      title: 'Espacio inicial',
+      description: 'Ideal para iniciar tu proceso terapéutico o abordar una situación puntual.',
+      checkIcon: 'purple',
+      sessions: '1 sesión individual',
+    },
+    {
+      icon:
+        <Brain style={{ color: 'A67B4E' }} />,
+      badge: '4 SESIONES',
+      title: 'Proceso de acompañamiento',
+      description: 'Un espacio para comenzar a trabajar emociones, pensamientos y herramientas de manera más constante.',
+      checkIcon: 'gold',
+      sessions: '4 sesiones individuales',
+      popular: true,
+    },
+    {
+      icon:
+        <Heart />,
+      badge: '8 SESIONES',
+      title: 'Proceso terapéutico continuo',
+      description: 'Pensado para quienes desean profundizar en su proceso emocional y generar cambios más conscientes y sostenibles.',
+      checkIcon: 'purple',
+      sessions: '8 sesiones individuales',
+    },
+  ];
 
 const PILLARS = [
   "Acompañamiento psicológico online",
@@ -55,12 +87,12 @@ const TESTS = [
 ];
 
 const FOR_ITEMS = [
-  { t:"Buscas trabajar tus heridas de infancia",      d:"Estás listo o lista para tomar responsabilidad de tu vida y sanar viejas heridas que te encadenan." },
-  { t:"La maternidad te confronta en el puerperio",   d:"Te sientes agotada, culpable o emocionalmente desbordada. Necesitas un espacio solo para ti, sin juicio." },
-  { t:"Eres padre y quieres cambiar la historia",     d:"Quieres frenar tus automáticos y darle a tu hijo o hija lo que no recibiste, aún sin saber muy bien cómo." },
-  { t:"Estás en un momento de transición vital",      d:"Maternidad, migración, separación, cambios laborales. Necesitas sostén emocional y un espacio seguro para integrar lo que está cambiando." },
-  { t:"Buscas orientación emocional para tu familia", d:"Quieres comprender las conductas infantiles y fortalecer el vínculo desde una mirada respetuosa." },
-  { t:"Te sientes emocionalmente agotada/o",          d:"Vives con burnout, desconexión o cansancio profundo, y necesitas regularte y reencontrarte contigo." },
+  { t:"🌱 Hay emociones que te cuesta entender o expresar.",      d:"Estás listo o lista para tomar responsabilidad de tu vida y sanar viejas heridas que te encadenan." },
+  { t:"🧠 Sientes que tu mente no descansa o que estás cargando demasiado.",   d:"Te sientes agotada, culpable o emocionalmente desbordada. Necesitas un espacio solo para ti, sin juicio." },
+  { t:"💛 Te gustaría fortalecer autoestima, límites o bienestar emocional.",     d:"Quieres frenar tus automáticos y darle a tu hijo o hija lo que no recibiste, aún sin saber muy bien cómo." },
+  { t:"👶 Tu hijo(a) está atravesando cambios emocionales, conductuales o dificultades para expresar lo que siente.",      d:"Maternidad, migración, separación, cambios laborales. Necesitas sostén emocional y un espacio seguro para integrar lo que está cambiando." },
+  { t:"✨ Estás pasando por situaciones que han afectado tu tranquilidad, relaciones o forma de verte a ti mismo.", d:"Quieres comprender las conductas infantiles y fortalecer el vínculo desde una mirada respetuosa." },
+  { t:"🤍 Necesitas un espacio donde sentirte escuchado sin juicio.",          d:"Vives con burnout, desconexión o cansancio profundo, y necesitas regularte y reencontrarte contigo." },
 ];
 
 const SERVICES = [
@@ -317,6 +349,7 @@ export {
     H2,
     H3,
     SVCS,
+    packages,
     FAQS,
     PILLARS,
     TESTS,

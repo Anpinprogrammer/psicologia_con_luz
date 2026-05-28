@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router'
 import './AuthModal.css'
 import { useAuthContext } from '../../context/AuthContext'
 import { LOGO } from '../../utils'
+import { Eye, EyeOff } from 'lucide-react'
 
 
 // ─── Types ───────────────────────────────────────────────
@@ -107,7 +108,9 @@ const LoginView: React.FC<LoginViewProps> = ({ onSwitch }) => {
               autoComplete="current-password"
             />
             <button className="am-eye" type="button" onClick={() => setShowPass(p => !p)}>
-              {showPass ? '🙈' : '👁'}
+              {showPass ? 
+                <EyeOff size={20} />
+              : <Eye size={20} /> }
             </button>
           </div>
           {errors.password && <span className="am-err-msg">{errors.password}</span>}
@@ -243,7 +246,9 @@ const RegisterView: React.FC<RegisterViewProps> = ({ onSwitch }) => {
                 placeholder="Mín. 8 caracteres" value={form.password}
                 onChange={e => up('password', e.target.value)} />
               <button className="am-eye" type="button" onClick={() => setShowPass(p => !p)}>
-                {showPass ? '🙈' : '👁'}
+                {showPass ? 
+                  <EyeOff size={18} />
+                : <Eye size={18} /> }
               </button>
             </div>
             {form.password.length > 0 && (
@@ -270,7 +275,9 @@ const RegisterView: React.FC<RegisterViewProps> = ({ onSwitch }) => {
                 placeholder="Repite tu contraseña" value={form.confirm}
                 onChange={e => up('confirm', e.target.value)} />
               <button className="am-eye" type="button" onClick={() => setShowConf(p => !p)}>
-                {showConf ? '🙈' : '👁'}
+                {showConf ?
+                  <EyeOff size={18} />
+                : <Eye size={18} /> }
               </button>
             </div>
             {errors.confirm && <span className="am-err-msg">{errors.confirm}</span>}

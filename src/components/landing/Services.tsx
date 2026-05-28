@@ -19,13 +19,19 @@ const Services = () => {
                 <div className="svc-nm">{s.name}</div>
                 <p className="svc-ds">{s.desc}</p>
                 {s.note && <p className="svc-nt">{s.note}</p>}
+
+                {/** 
                 <div className="svc-pr">
                   <span className="am">{s.price}</span>
                   <span className="du">{s.dur}</span>
                 </div>
+                */}
               </div>
             ))}
           </div>
+          {/**
+           * 
+           
           <div className="disc">
             <div>
               <div className="dp" style={{ color: 'white' }}>15%</div>
@@ -45,6 +51,7 @@ const Services = () => {
               Agenda tu primera sesión →
             </Link>
           </div>
+          */}
         </div>
       </section>
   )

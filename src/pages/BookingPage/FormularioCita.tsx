@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useAppointments } from '../../hooks/useAppointments';
 import type { Appointment } from '../../types/appointment';
+import { CSSTransition } from 'react-transition-group'; 
 //import { useNavigate } from 'react-router-dom';
 
 import { STEPS, SERVICES, STEP_META, validate } from '../../utils';
@@ -18,6 +19,7 @@ import '../../components/formulario_cita/styles/Field.css'
 const FormularioCita = () => {
 
   const { create } = useAppointments()
+  const nodeRef = useRef(null)
 
   //const navigate = useNavigate();
   const [step, setStep]   = useState(0);
@@ -103,7 +105,14 @@ const FormularioCita = () => {
     }
   
     return(
-      <>
+      <CSSTransition
+        in={true}
+        timeout={700}
+        classNames="page"
+        nodeRef={nodeRef}
+        unmountOnExit
+      >
+      <div className="page-wrapper" ref={nodeRef} >
         <NavBar static />
 
         {/* ── PROGRESS STEPS ── */}
@@ -188,7 +197,8 @@ const FormularioCita = () => {
   
           </div>
         </main>
-      </>
+      </div>
+      </CSSTransition>
     );
 }
 

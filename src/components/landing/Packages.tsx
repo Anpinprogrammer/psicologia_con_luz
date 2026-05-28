@@ -1,64 +1,13 @@
+import { useNavigate } from 'react-router';
 import './styles/Packages.css';
-import { Heart, Brain, Sprout, Leaf } from 'lucide-react';
+import { packages } from '../../utils';
+import { Heart, Sprout } from 'lucide-react';
+
 
 
 const Packages = () => {
-  const packages = [
-    {
-      icon:
-        <Leaf style={{ color: "#5B6C7B" }}/>
-        /**
-         * 
-         
-      (
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16 4C12 4 10 8 10 10C10 14 13 18 16 22C19 18 22 14 22 10C22 8 20 4 16 4Z" stroke="#5B6C7B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M16 22V28" stroke="#5B6C7B" strokeWidth="1.5" strokeLinecap="round"/>
-          <path d="M12 28H20" stroke="#5B6C7B" strokeWidth="1.5" strokeLinecap="round"/>
-        </svg>
-      )*/,
-      badge: '1 SESIÓN',
-      title: 'Espacio inicial',
-      description: 'Ideal para iniciar tu proceso terapéutico o abordar una situación puntual.',
-      checkIcon: 'purple',
-      sessions: '1 sesión individual',
-    },
-    {
-      icon:
-        <Brain style={{ color: 'A67B4E' }} />
-        /**
-         * 
-         
-      (
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16 6C10 6 8 12 8 16C8 22 12 26 16 28C20 26 24 22 24 16C24 12 22 6 16 6Z" stroke="#A67B4E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          <circle cx="16" cy="14" r="2" stroke="#A67B4E" strokeWidth="1.5"/>
-          <path d="M12 20C12 20 13.5 22 16 22C18.5 22 20 20 20 20" stroke="#A67B4E" strokeWidth="1.5" strokeLinecap="round"/>
-        </svg>
-      )*/,
-      badge: '4 SESIONES',
-      title: 'Proceso de acompañamiento',
-      description: 'Un espacio para comenzar a trabajar emociones, pensamientos y herramientas de manera más constante.',
-      checkIcon: 'gold',
-      sessions: '4 sesiones individuales',
-      popular: true,
-    },
-    {
-      icon:
-        <Heart />
-      /**
-       * (
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16 28C16 28 6 22 6 14C6 10 9 7 13 7C14.5 7 16 7.8 16 9.5C16 7.8 17.5 7 19 7C23 7 26 10 26 14C26 22 16 28 16 28Z" stroke="#5B6C7B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      )*/,
-      badge: '8 SESIONES',
-      title: 'Proceso terapéutico continuo',
-      description: 'Pensado para quienes desean profundizar en su proceso emocional y generar cambios más conscientes y sostenibles.',
-      checkIcon: 'purple',
-      sessions: '8 sesiones individuales',
-    },
-  ];
+
+  const navigate = useNavigate()
 
   return (
     <section className="packages-section" id='packages'>
@@ -116,7 +65,10 @@ const Packages = () => {
           <Heart style={{ color: "#A67B4E" }} size={28} />
         </div>
 
-        <button className="cta-button">
+        <button 
+          className="cta-button"
+          onClick={() => navigate('/agendar-cita')}
+        >
           Quiero comenzar mi proceso <span className="arrow">→</span>
         </button>
 
