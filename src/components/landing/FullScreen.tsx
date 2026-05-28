@@ -15,15 +15,15 @@ const FullScreen = () => {
 
         {/* Hero message */}
         <div className="hero-content">
-          <div className="tag fu hero-eyebrow">Bienestar real &amp; especialistas de confianza</div>
+          <div className="tag fu hero-eyebrow">Comprender, sentir y transformar 🧠💛</div>
 
           <h1 className="hero-title fu d1">
-            Tu bienestar integral,<br />
-            <span className="line2">en manos expertas</span>
+            Acompañamiento psicológico desde lo humano,<br />
+            <span className="line2">la escucha y el bienestar emocional</span>
           </h1>
 
           <p className="hero-sub fu d2">
-            Encuentra el apoyo profesional que necesitas para sanar, fortalecerte y crecer. Conecta con especialistas dedicados a tu salud física y emocional en un solo espacio diseñado para tu tranquilidad.
+            Un espacio para comprender lo que sientes, transformar pensamientos y construir herramientas para tu bienestar emocional.
           </p>
 
           <div className="hero-btns fu d3">
@@ -31,13 +31,13 @@ const FullScreen = () => {
               to={'/agendar-cita'}
               className='bg-amber'
             >
-              Agenda tu primera sesión →
+              Agenda tu espacio →
             </RouterLink>
             <ScrollerLink
               to='services'
               className='bo-w'
             >
-              Conoce nuestros servicios
+              ¿Cómo puedo acompañarte?
             </ScrollerLink>
           </div>
         </div>
