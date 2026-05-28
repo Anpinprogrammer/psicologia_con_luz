@@ -17,8 +17,8 @@ const StepFecha = ({ data, setData, errors }: DataTransmiting) => {
       <div className="date-strip">
         {days.map((d, i) => (
           <div key={i}
-            className={`date-chip${data.fecha === d.full ? " selected" : ""}`}
-            onClick={() => up("fecha", d.full)}>
+            className={`date-chip${data.fecha === d.sql ? " selected" : ""}`}
+            onClick={() => up("fecha", d.sql)}>
             <div className="dc-day">{d.day}</div>
             <div className="dc-num">{d.num}</div>
             <div className="dc-day" style={{ fontSize:"0.62rem", marginTop:"1px" }}>{d.month}</div>

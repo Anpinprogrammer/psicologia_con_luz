@@ -224,18 +224,83 @@ function validateStep(step: number, data: {
 
 /* Generate next 8 days */
 function getNextDays() {
-  const days = ["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
-  const months = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+
+  const days = [
+
+    "Dom","Lun","Mar",
+
+    "Mié","Jue","Vie","Sáb"
+
+  ];
+
+  const months = [
+
+    "Ene","Feb","Mar","Abr",
+
+    "May","Jun","Jul","Ago",
+
+    "Sep","Oct","Nov","Dic"
+
+  ];
+
   const result = [];
+
   const today = new Date();
-  for (let i = 1; i <= 8; i++) {
+
+  for(let i=1;i<=8;i++){
+
     const d = new Date(today);
-    d.setDate(today.getDate() + i);
-    if (d.getDay() !== 0) { // skip Sundays
-      result.push({ day: days[d.getDay()], num: d.getDate(), month: months[d.getMonth()], full: d.toLocaleDateString("es-CO", { weekday:"long", day:"numeric", month:"long" }) });
+
+    d.setDate(
+      today.getDate()+i
+    );
+
+    if(d.getDay()!==0){
+
+      result.push({
+
+        day:
+        days[d.getDay()],
+
+        num:
+        d.getDate(),
+
+        month:
+        months[d.getMonth()],
+
+        // UI
+
+        display:
+        d.toLocaleDateString(
+
+          "es-CO",
+
+          {
+
+            weekday:"long",
+
+            day:"numeric",
+
+            month:"long"
+
+          }
+
+        ),
+
+        // SQL / Supabase
+
+        sql:
+        d.toISOString()
+        .split('T')[0]
+
+      });
+
     }
+
   }
+
   return result;
+
 }
 
 

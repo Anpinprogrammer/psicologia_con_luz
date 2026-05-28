@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
+import { useAppointments } from '../../hooks/useAppointments';
+import type { Appointment } from '../../types/appointment';
 //import { useNavigate } from 'react-router-dom';
 
 import { STEPS, SERVICES, STEP_META, validate } from '../../utils';
@@ -15,6 +17,8 @@ import '../../components/formulario_cita/styles/Field.css'
 
 const FormularioCita = () => {
 
+  const { create } = useAppointments()
+
   //const navigate = useNavigate();
   const [step, setStep]   = useState(0);
     const [done, setDone]   = useState(false);
@@ -30,8 +34,8 @@ const FormularioCita = () => {
         consent: ''
     });
     const [data, setData]   = useState({
-      nombre:"", email:"", tel:"", pais:"", fuente:"", nota:"",
-      svc:"", terapeuta:"cualquiera", modalidad:"",
+     nombre:"", email:"", tel:"", pais:"", fuente:"", nota:"",
+      svc:"", terapeuta:"", modalidad:"virtual",
       fecha:"", hora:"",
       consent:false,
     });
@@ -44,9 +48,8 @@ const FormularioCita = () => {
     const dataRef = useRef(data);
     useEffect(() => { dataRef.current = data; }, [data]);
   
-    function next(){
+    async function next(){
       const latest = dataRef.current;
-      console.log(data)
       const e = validate(step, latest);
       if(Object.values(e).some(value => value)) { setErrs(e); return; }
       setErrs({nombre: '',
@@ -59,8 +62,33 @@ const FormularioCita = () => {
         hora: '',
         consent: ''});
       if(step < STEPS.length - 1) setStep(s => s + 1);
-      else setDone(true);
+      else {
+        const formData : Appointment = {
+          psychologist_id: 'bd4b5393-4522-440b-a21c-9057bc971a07',
+          nombre: data.nombre,
+          email: data.email,
+          telefono: data.tel,
+          pais: data.pais,
+          servicio: data.svc,
+          modalidad: data.modalidad,
+          appointment_date: data.fecha,
+          appointment_time: data.hora,
+          note: data.nota,
+          consent: data.consent
+        }
+
+        console.log(formData)
+        try {
+          const { error } = await create(formData)
+          if(!error) setDone(true);
+
+        } catch (error) {
+          console.log(error)
+        }
+        
+      }
     }
+
     function prev(){ 
       setErrs({nombre: '',
         email: '',
