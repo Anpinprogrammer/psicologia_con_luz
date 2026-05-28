@@ -45,11 +45,23 @@ const FullScreen = () => {
         {/* Stats strip anchored to bottom */}
         <div className="hero-stats fu d4">
           {[
-            { n: "+500", l: "Familias acompañadas" },
-            { n: "100%", l: "Online & confidencial" },
-            { n: "+5",   l: "Años de experiencia" },
-            { n: "ES/EN", l: "Español e inglés" },
-          ].map((s, i) => (
+            {
+              n: "+500",
+              l: "Procesos acompañados con empatía y compromiso"
+            },
+            {
+              n: "Humano 🧠",
+              l: "Psicología cercana, desde lo humano"
+            },
+            {
+              n: "Virtual 🌎",
+              l: "Sesiones desde cualquier lugar"
+            },
+            {
+              n: "Presencial 🇨🇴",
+              l: "Atención en Santiago de Cali"
+            }
+          ].map((s, i) => ( 
             <div className="hero-stat" key={i}>
               <div className="hn">{s.n}</div>
               <div className="hl">{s.l}</div>

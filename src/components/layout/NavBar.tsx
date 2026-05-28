@@ -70,7 +70,7 @@ const NavBar = ({ static: isStatic = false }: { static?: boolean }) => {
                     <ul className="nav-links">
                       <li>
                         <ScrollLink to="about">
-                          Quiénes somos
+                          ¿Quién te Acompaña?
                         </ScrollLink>
                       </li>
                       <li>

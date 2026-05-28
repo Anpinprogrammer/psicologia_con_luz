@@ -55,12 +55,16 @@
   color:var(--amber);
 }
 .hero-sub{
-  max-width:580px;margin:1.8rem auto 2.8rem;
+  max-width:580px;margin:1.5rem auto 2.8rem;
   font-size:1.05rem;font-weight:300;
   color: var(--muted);line-height:1.84;
 }
 .hero-btns{
-  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+  display:flex;
+  gap:1rem;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-bottom: 40px;
 }
 
 /* Scroll hint */

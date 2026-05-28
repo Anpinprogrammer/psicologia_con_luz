@@ -27,15 +27,18 @@ const LandingPage = () => {
                 </div>
                 </div>
                 <div>
-                <span className="tag-light">Sobre nosotros</span>
-                <h2 className="st">¿Qué es <em>Vitalia</em> Red de Bienestar</h2>
-                <p className="sb" style={{ marginBottom:"1.2rem" }}>
-                    <strong>Vitalia</strong> es una comunidad de profesionales de la salud comprometidos con el cuidado humano y científico. Somos el punto de encuentro donde psicólogos, fisioterapeutas y especialistas del bienestar colaboran para ofrecerte una atención personalizada.
+                <span className="tag-light">Sobre mi</span>
+                <h2 className="st">Acompañar Procesos <em>Tambien</em> es Cuidar Historias</h2>
+                <p className="sb" style={{ marginBottom:"1rem" }}>
+                    Acompaño procesos emocionales en niños, adolescentes, jóvenes y adultos desde un enfoque cognitivo conductual con una mirada humana, cercana y consciente.
                 </p>
-                <p className="sb" style={{ marginBottom:"2rem" }}>
-                    Aquí, tu historia es acompañada bajo un marco clínico claro y una comprensión profunda de la salud física y emocional. No es atención genérica: es un proceso diseñado a tu medida, centrado en tu recuperación y en tu calidad de vida.
+                <p className='sb' style={{ marginBottom: "1rem" }}>
+                  Creo en la importancia de crear espacios terapéuticos seguros, donde cada persona pueda expresar lo que siente, comprender sus emociones y desarrollar herramientas para afrontar sus dificultades de una manera más saludable.
                 </p>
-                <a href="#" className="bo">Conoce más →</a>
+                <p className="sb" style={{ marginBottom:"1.5rem" }}>
+                    El proceso terapéutico busca ayudarte a identificar patrones de pensamiento, comprender cómo influyen en tus emociones y conductas, y construir cambios conscientes que favorezcan tu bienestar emocional y tu calidad de vida. 💛 
+                </p>
+                <a href="#" className="bo">Comienza tu proceso →</a>
                 </div>
             </div>
             </div>
