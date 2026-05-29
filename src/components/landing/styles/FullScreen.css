@@ -204,7 +204,7 @@
   }
 
   .hero-title{
-    font-size:clamp(2.15rem,12vw,3.1rem);
+    font-size:45px;
   }
 
   .hero-stats{
