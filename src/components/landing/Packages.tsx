@@ -13,7 +13,8 @@ const Packages = () => {
     <section className="packages-section" id='packages'>
       <div className="packages-container">
         <h2 className="packages-title">
-          Procesos de acompañamiento emocional <span className="heart-emoji">💛</span>
+          Procesos de acompañamiento emocional
+          <Heart className="packages-title-icon" size={30} aria-hidden="true" />
         </h2>
         <p className="packages-subtitle">
           Elige el espacio que mejor se adapte a tu proceso. Cada proceso está pensado para acompañarte
@@ -57,12 +58,12 @@ const Packages = () => {
         </div>
 
         <div className="info-banner">
-        <Sprout style={{ color: "#A67B4E" }} size={28}/>
+        <Sprout className="info-icon" size={28} aria-hidden="true" />
           <p className="info-text">
             Los procesos continuos permiten profundizar, fortalecer herramientas emocionales
             y generar <strong>cambios más reales y sostenibles</strong> en tu bienestar.
           </p>
-          <Heart style={{ color: "#A67B4E" }} size={28} />
+          <Heart className="info-icon" size={28} aria-hidden="true" />
         </div>
 
         <button 

@@ -43,8 +43,12 @@ const FormularioCita = () => {
     });
   
     const svc = SERVICES.find(s=>s.id===data.svc);
-    const progress = done ? 100 : ((step) / STEPS.length) * 100;
-    const meta = STEP_META[step];
+  const progress = done ? 100 : ((step) / STEPS.length) * 100;
+  const meta = STEP_META[step];
+
+    useEffect(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }, []);
   
     // Keep a ref to always read the freshest data inside event handlers
     const dataRef = useRef(data);
@@ -107,7 +111,8 @@ const FormularioCita = () => {
     return(
       <CSSTransition
         in={true}
-        timeout={700}
+        appear
+        timeout={650}
         classNames="page"
         nodeRef={nodeRef}
         unmountOnExit

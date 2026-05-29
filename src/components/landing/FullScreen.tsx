@@ -18,7 +18,7 @@ const FullScreen = () => {
           <div className="tag fu hero-eyebrow">Comprender, sentir y transformar 🧠💛</div>
 
           <h1 className="hero-title fu d1">
-            Acompañamiento psicológico desde lo humano,<br />
+            Acompañamiento psicológico desde lo humano,<br className="hero-title-break" />
             <span className="line2">la escucha y el bienestar emocional</span>
           </h1>
 

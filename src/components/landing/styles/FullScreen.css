@@ -46,7 +46,7 @@
   font-size:clamp(3rem,4.8vw,7rem);
   font-weight:600;line-height:1.06;
   color: var(--dark);
-  letter-spacing:-0.01em;
+  letter-spacing:0;
   margin-bottom:0;
 }
 .hero-title .line2{
@@ -100,3 +100,118 @@
   font-size:1.8rem;font-weight:500;color: var(--amber);line-height:1;
 }
 .hero-stat .hl{font-size:0.71rem;color: var(--muted);margin-top:0.2rem;font-weight:400;letter-spacing:0.04em}
+
+@media(max-width:1100px){
+  .hero-wrap{
+    height:auto;
+    min-height:100svh;
+  }
+
+  .hero-content{
+    padding:8rem 1.5rem 11rem;
+  }
+
+  .hero-title{
+    font-size:clamp(2.7rem,8vw,5.2rem);
+    max-width:900px;
+  }
+
+  .hero-stats{
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0, 1fr));
+  }
+
+  .hero-stat{
+    max-width:none;
+    padding:1rem 1.2rem;
+  }
+}
+
+@media(max-width:760px){
+  .hero-wrap{
+    min-height:0;
+    overflow:visible;
+  }
+
+  .hero-content{
+    align-items:flex-start;
+    justify-content:flex-start;
+    min-height:auto;
+    padding:7.4rem 1.35rem 2.2rem;
+    text-align:left;
+  }
+
+  .hero-eyebrow{
+    margin-bottom:1.25rem;
+  }
+
+  .hero-title{
+    font-size:clamp(2.45rem,13vw,4rem);
+    line-height:1.08;
+  }
+
+  .hero-title-break{
+    display:none;
+  }
+
+  .hero-title .line2{
+    margin-top:0.35rem;
+  }
+
+  .hero-sub{
+    margin:1.15rem 0 1.75rem;
+    max-width:100%;
+    font-size:0.98rem;
+    line-height:1.72;
+  }
+
+  .hero-btns{
+    align-items:stretch;
+    flex-direction:column;
+    gap:0.8rem;
+    margin-bottom:0;
+    width:100%;
+  }
+
+  .hero-btns .bg-amber,
+  .hero-btns .bo-w{
+    justify-content:center;
+    width:100%;
+  }
+
+  .hero-stats{
+    position:relative;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-stat{
+    border-bottom:1px solid rgba(124,92,191,0.1);
+    padding:1rem 0.85rem;
+  }
+
+  .hero-stat:nth-child(2n){
+    border-right:none;
+  }
+
+  .hero-stat .hn{
+    font-size:1.45rem;
+  }
+}
+
+@media(max-width:450px){
+  .hero-content{
+    padding:6.8rem 1rem 1.8rem;
+  }
+
+  .hero-title{
+    font-size:clamp(2.15rem,12vw,3.1rem);
+  }
+
+  .hero-stats{
+    grid-template-columns:1fr;
+  }
+
+  .hero-stat{
+    border-right:none;
+  }
+}

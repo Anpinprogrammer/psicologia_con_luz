@@ -27,7 +27,7 @@
 .step-n{font-family:'Playfair Display',serif;font-size:4.5rem;font-weight:400;color:rgba(201,132,58,.22);line-height:1;margin-bottom:0.9rem}
 .step-img{width:108px;height:108px;border-radius:50%;object-fit:cover;margin:0 auto 1.3rem;border:2px solid rgba(124,92,191,.35)}
 .step-t{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:500;color:#fff;margin-bottom:0.75rem;line-height:1.32}
-.step-d{font-size:0.85rem;color:rgba(255,255,255,.4);line-height:1.76;font-weight:300}
+.step-d{font-size:15px;color:var(--amber);line-height:1.76;font-weight:300}
 
 /* PILLARS */
 .pil-g{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}

@@ -1,4 +1,6 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router'
 import FullScreen from '../../components/landing/FullScreen'
 import Services from '../../components/landing/Services'
 import Packages from '../../components/landing/Packages'
@@ -10,7 +12,21 @@ import './Landing.css'
 
 const LandingPage = () => {
 
- 
+  const location = useLocation()
+
+  useEffect(() => {
+    if (!location.hash) return
+
+    const id = location.hash.replace('#', '')
+    const timer = window.setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    }, 80)
+
+    return () => window.clearTimeout(timer)
+  }, [location.hash])
 
   return (
     <>
@@ -68,7 +84,7 @@ const LandingPage = () => {
                 <div className="step-n">{s.n}</div>
                 <img src={s.img} alt={s.t} className="step-img" />
                 <h3 className="step-t">{s.t}</h3>
-                <p className="step-d">{s.d}</p>
+                <p className="step-d st">{s.d}</p>
               </div>
             ))}
           </div>

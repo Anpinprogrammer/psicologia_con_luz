@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   BookOpen,
   Calendar,
@@ -124,6 +125,11 @@ const getContentLabel = (type: BlogContentType) =>
   type === "video" ? "Video" : "Artículo";
 
 export default function Blog() {
+
+  useEffect(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, []);
+
   return (
     <div className="blog-page">
       <NavBar />
