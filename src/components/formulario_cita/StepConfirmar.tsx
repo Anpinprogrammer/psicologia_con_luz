@@ -10,7 +10,8 @@ import { type DataTransmiting } from '../../types';
 
 const StepConfirmar = ({ data, setData, errors, dRef } : DataTransmiting) => {
   const svc=SERVICES.find(s=>s.id===data.svc);
-  const mod=data.modalidad==="video"?"💻 Videollamada":data.modalidad==="whatsapp"?"📱 WhatsApp":"—";
+  const mod=data.modalidad==="virtual"?"💻 Virtual":data.modalidad==="presencial"?"📍 Presencial":"—";
+  const zone=data.zona==="zona-sur"?"Zona sur":data.zona==="zona-norte"?"Zona norte":"—";
   return(
     <div className="step3-layout fade">
       <div>
@@ -23,6 +24,7 @@ const StepConfirmar = ({ data, setData, errors, dRef } : DataTransmiting) => {
             ["Servicio", svc?`${svc.icon} ${svc.name}`:"—"],
             ["Duración", svc?.dur||"—"],
             ["Modalidad",mod],
+            ...(data.modalidad === "presencial" ? [["Zona", zone]] : []),
             ["Fecha",    data.fecha||"—"],
             ["Hora",     data.hora||"—"],
           ].map(([k,v])=>(
@@ -54,7 +56,7 @@ const StepConfirmar = ({ data, setData, errors, dRef } : DataTransmiting) => {
               }}/>
             <label htmlFor="consent">
               He leído y acepto los <a href="#">términos y condiciones</a> y la{" "}
-              <a href="#">política de privacidad</a>. Entiendo que esta sesión es virtual y confidencial.
+              <a href="#">política de privacidad</a>. Entiendo que esta sesión es confidencial y recibiré las instrucciones correspondientes según la modalidad elegida.
             </label>
           </div>
           {errors.consent&&<p className="ferr-consent">{errors.consent}</p>}

@@ -96,12 +96,9 @@ const FOR_ITEMS = [
 ];
 
 const SERVICES = [
-  { id:"emocional",  icon:"🌿", name:"Acompañamiento Emocional",         price:"$70 USD", dur:"50 min" },
-  { id:"crianza",    icon:"👶", name:"Asesoría en Crianza",               price:"$70 USD", dur:"50 min" },
-  { id:"postparto",  icon:"🤱", name:"Postparto y Maternidad",            price:"$90 USD", dur:"50 min" },
-  { id:"sensorial",  icon:"🧠", name:"Necesidades Sensoriales",           price:"$70 USD", dur:"50 min" },
-  { id:"parejas",    icon:"💑", name:"Acompañamiento a Parejas",          price:"$98 USD", dur:"50 min" },
-  { id:"sueno",      icon:"🌙", name:"Asesoría en Sueño",                price:"$115 USD", dur:"90 min" },
+  { id:"espacio-inicial", icon:"🌿", name:"Espacio inicial", price:"A confirmar", dur:"1 sesión individual" },
+  { id:"acompanamiento",  icon:"🧠", name:"Proceso de acompañamiento", price:"A confirmar", dur:"4 sesiones individuales", popular:true },
+  { id:"continuo",        icon:"♡", name:"Proceso terapéutico continuo", price:"A confirmar", dur:"8 sesiones individuales" },
 ];
 
 const THERAPISTS = [
@@ -153,6 +150,7 @@ function validate(step: number, d : {
     svc: string;
     terapeuta: string;
     modalidad: string;
+    zona: string;
     fecha: string;
     hora: string;
     consent: boolean;
@@ -164,6 +162,7 @@ function validate(step: number, d : {
     pais: string;
     svc: string;
     modalidad: string; 
+    zona: string;
     fecha: string;
     hora: string;
     consent: string;
@@ -174,6 +173,7 @@ function validate(step: number, d : {
     pais: '',
     svc: '',
     modalidad: '',
+    zona: '',
     fecha: '',
     hora: '',
     consent: ''
@@ -185,8 +185,9 @@ function validate(step: number, d : {
     if(!d.pais)           e.pais="Selecciona tu país";
   }
   if(step===1){
-    if(!d.svc)       e.svc="Selecciona un servicio";
+    if(!d.svc)       e.svc="Selecciona un paquete";
     if(!d.modalidad) e.modalidad="Selecciona una modalidad";
+    if(d.modalidad === "presencial" && !d.zona) e.zona="Selecciona una zona";
   }
   if(step===2){
     if(!d.fecha)  e.fecha="Selecciona una fecha";

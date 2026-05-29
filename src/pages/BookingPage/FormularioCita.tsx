@@ -31,6 +31,7 @@ const FormularioCita = () => {
         pais: '',
         svc: '',
         modalidad: '', 
+        zona: '',
         fecha: '',
         hora: '',
         consent: ''
@@ -38,6 +39,7 @@ const FormularioCita = () => {
     const [data, setData]   = useState({
      nombre:"", email:"", tel:"", pais:"", fuente:"", nota:"",
       svc:"", terapeuta:"", modalidad:"virtual",
+      zona:"",
       fecha:"", hora:"",
       consent:false,
     });
@@ -64,6 +66,7 @@ const FormularioCita = () => {
         pais: '',
         svc: '',
         modalidad: '', 
+        zona: '',
         fecha: '',
         hora: '',
         consent: ''});
@@ -79,7 +82,9 @@ const FormularioCita = () => {
           modalidad: data.modalidad,
           appointment_date: data.fecha,
           appointment_time: data.hora,
-          note: data.nota,
+          note: data.modalidad === 'presencial' && data.zona
+            ? `${data.nota ? `${data.nota}\n` : ''}Zona presencial: ${data.zona}`
+            : data.nota,
           consent: data.consent
         }
 
@@ -102,6 +107,7 @@ const FormularioCita = () => {
         pais: '',
         svc: '',
         modalidad: '', 
+        zona: '',
         fecha: '',
         hora: '',
         consent: ''}); 

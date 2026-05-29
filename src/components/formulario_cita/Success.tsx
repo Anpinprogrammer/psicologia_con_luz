@@ -17,6 +17,7 @@ interface SuccessProps {
     svc: string;
     terapeuta: string;
     modalidad: string;
+    zona: string;
     fecha: string;
     hora: string;
     consent: boolean;
@@ -28,7 +29,8 @@ const Success = ({ d } :
 ) => {
   const navigate = useNavigate();  
   const svc=SERVICES.find(s=>s.id===d.svc);
-  const mod=d.modalidad==="video"?"💻 Videollamada":"📱 WhatsApp";
+  const mod=d.modalidad==="virtual"?"💻 Virtual":d.modalidad==="presencial"?"📍 Presencial":"—";
+  const zone=d.zona==="zona-sur"?"Zona sur":d.zona==="zona-norte"?"Zona norte":"—";
   return(
     <div className="success-body fade">
       <div className="success-left">
@@ -54,6 +56,7 @@ const Success = ({ d } :
               ["Servicio",  svc?`${svc.icon} ${svc.name}`:"—"],
               ["Duración",  svc?.dur||"—"],
               ["Modalidad", mod],
+              ...(d.modalidad === "presencial" ? [["Zona", zone]] : []),
               ["Fecha",     d.fecha||"—"],
               ["Hora",      d.hora||"—"],
             ].map(([k,v])=>(

@@ -9,6 +9,7 @@ export type DataTransmiting = {
         svc: string;
         terapeuta: string;
         modalidad: string;
+        zona: string;
         fecha: string;
         hora: string;
         consent: boolean;
@@ -23,6 +24,7 @@ export type DataTransmiting = {
         svc: string;
         terapeuta: string;
         modalidad: string;
+        zona: string;
         fecha: string;
         hora: string;
         consent: boolean;
@@ -34,6 +36,7 @@ export type DataTransmiting = {
         pais: string;
         svc: string;
         modalidad: string; 
+        zona: string;
         fecha: string;
         hora: string;
         consent: string;
@@ -48,6 +51,7 @@ export type DataTransmiting = {
         svc: string;
         terapeuta: string;
         modalidad: string;
+        zona: string;
         fecha: string;
         hora: string;
         consent: boolean;
