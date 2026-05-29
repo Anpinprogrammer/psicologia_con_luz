@@ -208,7 +208,7 @@
 
 .package-option-footer strong{
   color:var(--mid);
-  font-size:0.68rem;
+  font-size:15px;
   font-weight:800;
   line-height:1.35;
 }
