@@ -7,7 +7,7 @@ import Packages from '../../components/landing/Packages'
 import ForYou from '../../components/landing/ForYou'
 import FaqBox from '../../components/landing/FaqBox'
 
-import { AB1, H1, H2, H3, PILLARS, T1, T2, TESTS, FAQS } from '../../utils'
+import { AB1, H1, H2, H3, TESTS, FAQS } from '../../utils'
 import './Landing.css'
 
 const LandingPage = () => {
