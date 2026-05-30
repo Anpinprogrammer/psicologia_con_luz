@@ -55,7 +55,7 @@ const LandingPage = () => {
                 <p className="sb" style={{ marginBottom:"1.5rem" }}>
                     El proceso terapéutico busca ayudarte a identificar patrones de pensamiento, comprender cómo influyen en tus emociones y conductas, y construir cambios conscientes que favorezcan tu bienestar emocional y tu calidad de vida. 💛 
                 </p>
-                <a href="#" className="bo">Comienza tu proceso →</a>
+                <Link to="/agendar-cita" className="bo">Comienza tu proceso →</Link>
                 </div>
             </div>
             </div>
