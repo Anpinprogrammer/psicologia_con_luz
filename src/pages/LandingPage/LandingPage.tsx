@@ -91,7 +91,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* ══════ PILLARS ══════ */}
+      {/* ══════ PILLARS ══════ 
       <section className='section-bg'>
         <div className="container">
           <div className="pil-g">
@@ -113,8 +113,9 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
+      */}
 
-      {/* ══════ TEAM ══════ */}
+      {/* ══════ TEAM ══════ 
       <section className="team-bg" id='team'>
         <div className="container">
           <div className="team-g">
@@ -137,6 +138,7 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
+      */}
 
       {/* ══════ TESTIMONIALS ══════ */}
       <section className='section-testimonials' style={{ background: '#F2EFF9' }} >

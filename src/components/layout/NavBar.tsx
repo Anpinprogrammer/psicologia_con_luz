@@ -106,11 +106,14 @@ const NavBar = ({ static: isStatic = false }: { static?: boolean }) => {
                           Planes
                         </ScrollLink>
                       </li>
+                      {/**
+                       * 
                       <li>
                         <ScrollLink to="team" onClick={closeMenu}>
                           Nuestro Equipo
                         </ScrollLink>
                       </li>
+                      */}
                       <li>
                         <RouterLink to="/blog" onClick={closeMenu}>
                           Blog
@@ -134,11 +137,14 @@ const NavBar = ({ static: isStatic = false }: { static?: boolean }) => {
                           Planes
                         </RouterLink>
                       </li>
+                      {/**
+                       * 
                       <li>
                         <RouterLink to="/#team" onClick={closeMenu}>
                           Nuestro Equipo
                         </RouterLink>
                       </li>
+                       */}
                       <li>
                         <RouterLink to="/blog" onClick={closeMenu}>
                           Blog

@@ -134,11 +134,8 @@
   }
 
   .hero-content{
-    align-items:flex-start;
-    justify-content:flex-start;
     min-height:auto;
     padding:7.4rem 1.35rem 2.2rem;
-    text-align:left;
   }
 
   .hero-eyebrow{
@@ -204,7 +201,7 @@
   }
 
   .hero-title{
-    font-size:45px;
+    font-size:35px;
   }
 
   .hero-stats{
