@@ -97,7 +97,10 @@ const NavBar = ({ static: isStatic = false }: { static?: boolean }) => {
                         </ScrollLink>
                       </li>
                       <li>
-                        <ScrollLink to="services" onClick={closeMenu}>
+                        <ScrollLink to="services"
+                          smooth
+                          duration={500}
+                          offset={-70} onClick={closeMenu}>
                           Acompañamiento
                         </ScrollLink>
                       </li>

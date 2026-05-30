@@ -6,6 +6,10 @@
   padding: 80px 20px;
 }
 
+#packages {
+  scroll-margin-top: 100px;
+}
+
 .packages-container {
   max-width: 1100px;
   margin: 0 auto;
@@ -99,6 +103,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.package-icon.gold {
+  background: var(--amberLight);
 }
 
 .package-badge {

@@ -37,7 +37,7 @@ const Packages = () => {
                 </div>
               )}
               <div className="package-header">
-                <div className="package-icon">{pkg.icon}</div>
+                <div className={`package-icon ${pkg.popular && 'gold'} `}>{pkg.icon}</div>
                 <span className={`package-badge ${pkg.popular ? 'badge-gold' : 'badge-purple'}`}>
                   {pkg.badge}
                 </span>
