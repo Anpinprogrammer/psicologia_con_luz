@@ -12,6 +12,7 @@ const Packages = () => {
   return (
     <section className="packages-section" id='packages'>
       <div className="packages-container">
+        <span className="tag-light">Nuestro Acompañamiento</span>
         <h2 className="packages-title">
           Procesos de acompañamiento emocional
           <Heart className="packages-title-icon" size={30} aria-hidden="true" />

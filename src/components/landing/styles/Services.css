@@ -16,6 +16,8 @@
 .svc-pr{margin-top:auto;padding-top:1.2rem;display:flex;align-items:flex-end;justify-content:space-between;border-top:1px solid var(--amberLight)}
 .svc-pr .am{font-family:'Playfair Display',serif;font-size:1.65rem;font-weight:500;color: var(--amber)}
 .svc-pr .du{font-size:0.72rem;color: var(--muted);text-align:right;line-height:1.4}
+.svc-carousel{position:relative}
+.svc-carousel-controls{display:none}
 
 .disc{
   background:linear-gradient(130deg, var(--amber) 0%, var(--amberDark) 100%);
@@ -30,5 +32,83 @@
 
 /* RESPONSIVE */
 @media(max-width:960px){
-  .svc-grid{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:560px){
+  .svc-hd{margin-bottom:2.4rem}
+  .svc-grid{
+    display:flex;
+    gap:0;
+    margin:0;
+    padding:0;
+    overflow-x:auto;
+    overscroll-behavior-x:contain;
+    scroll-snap-type:x mandatory;
+    scroll-padding:0;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .svc-grid::-webkit-scrollbar{display:none}
+  .svc{
+    flex:0 0 100%;
+    min-height:340px;
+    padding:2rem 3.45rem;
+    scroll-snap-align:start;
+  }
+  .svc:hover{
+    transform:none;
+    box-shadow:none;
+    border-top-color:var(--amberLight);
+  }
+  .svc-carousel-controls{
+    display:block;
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:4;
+  }
+  .svc-carousel-btn{
+    position:absolute;
+    top:50%;
+    width:34px;
+    height:34px;
+    border:1px solid var(--amber);
+    border-radius:50%;
+    background:var(--amber);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    pointer-events:auto;
+    box-shadow:0 12px 30px rgba(160,98,30,.26);
+    transform:translateY(-50%);
+    transition:background .2s,border-color .2s,color .2s,opacity .2s,box-shadow .2s;
+  }
+  .svc-carousel-btn-prev{left:0.45rem}
+  .svc-carousel-btn-next{right:0.45rem}
+  .svc-carousel-btn svg{
+    display:block;
+  }
+  .svc-carousel-btn:hover{
+    background:var(--amberDark);
+    border-color:var(--amberDark);
+    color:#fff;
+    box-shadow:0 14px 34px rgba(160,98,30,.32);
+  }
+  .svc-carousel-btn:disabled{
+    opacity:.72;
+    cursor:default;
+    background:#fff;
+    color:var(--amberDark);
+    border-color:rgba(201,132,58,.46);
+    box-shadow:0 10px 24px rgba(30,32,40,.12);
+  }
+  .svc-carousel-btn:disabled:hover{
+    background:#fff;
+    color:var(--amberDark);
+    border-color:rgba(201,132,58,.46);
+    box-shadow:0 10px 24px rgba(30,32,40,.12);
+  }
 }
