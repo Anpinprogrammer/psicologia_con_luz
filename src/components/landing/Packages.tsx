@@ -12,10 +12,10 @@ const Packages = () => {
   return (
     <section className="packages-section" id='packages'>
       <div className="packages-container">
-        <span className="tag-light">Nuestro Acompañamiento</span>
-        <h2 className="packages-title">
-          Procesos de acompañamiento emocional
-          <Heart className="packages-title-icon" size={30} aria-hidden="true" />
+        <span className="tag-light">Planes</span>
+        <h2 className="st">
+          Procesos de <em>acompañamiento</em> emocional
+          
         </h2>
         <p className="packages-subtitle">
           Elige el espacio que mejor se adapte a tu proceso. Cada proceso está pensado para acompañarte

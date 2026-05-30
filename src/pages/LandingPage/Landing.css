@@ -89,4 +89,22 @@
   .fy-img{position:static}
   .about-fl{right:0}
   section{padding:4rem 0}
+
+@media (max-width: 760px) {
+  .test-grid {
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    gap: 1rem;
+  }
+  .test-c {
+    flex: 0 0 100%;
+    min-width: 100%;
+    animation: slide 8s infinite linear;
+  }
+  @keyframes slide {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+  }
+}
 }

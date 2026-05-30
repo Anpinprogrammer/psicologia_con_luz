@@ -69,6 +69,12 @@
   transition:all 0.2s;font-family:'Nunito',sans-serif;
 }
 .btn-back:hover{background: var(--amberDark);}
+.nav-links a.active-tab,
+.nav-links span.active-tab{
+
+  color:var(--amber);
+
+}
 
 /* RESPONSIVE */
 @media(max-width:960px){

@@ -49,7 +49,7 @@ const Services = () => {
     <section className="svc-bg" id='services'>
         <div className="container">
           <div className="svc-hd">
-            <span className="tag-light">Nuestro Acompañamiento</span>
+            <span className="tag-light">Acompañamiento</span>
             <h2 className="st">¿Cómo puedo <em>acompañarte?</em></h2>
             <p className="sb">Cada servicio está diseñado para acompañarte de forma honesta, técnica y humana, según lo que tú y tu familia necesiten.</p>
           </div>

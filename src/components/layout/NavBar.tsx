@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Link as RouterLink, useNavigate} from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import { LOGO } from '../../utils';
 import AuthModal from '../ui/AuthModal';
@@ -92,31 +92,52 @@ const NavBar = ({ static: isStatic = false }: { static?: boolean }) => {
                   { location.pathname === '/' ? (
                     <ul className={navLinksClass}>
                       <li>
-                        <ScrollLink to="about" onClick={closeMenu}>
+                        <ScrollLink 
+                          to="about"
+                          duration={500}
+                          offset={-35}
+                          spy={true}  
+                          activeClass='active-tab'
+                          onClick={closeMenu}
+                        >
                           ¿Quién te Acompaña?
                         </ScrollLink>
                       </li>
                       <li>
-                        <ScrollLink to="services"
-                          smooth
+                        <ScrollLink 
+                          to="services"
                           duration={500}
-                          offset={-70} onClick={closeMenu}>
+                          offset={-35} 
+                          spy={true}  
+                          activeClass='active-tab'
+                          onClick={closeMenu}
+                        >
                           Acompañamiento
                         </ScrollLink>
                       </li>
                       <li>
-                        <ScrollLink to="packages" onClick={closeMenu}>
+                        <ScrollLink 
+                          to="packages" 
+                          duration={500}
+                          offset={-35} 
+                          spy={true}  
+                          activeClass='active-tab'
+                          onClick={closeMenu}
+                        >
                           Planes
                         </ScrollLink>
                       </li>
-                      {/**
-                       * 
                       <li>
-                        <ScrollLink to="team" onClick={closeMenu}>
-                          Nuestro Equipo
+                        <ScrollLink 
+                          to="foryou" 
+                          duration={500}
+                          offset={-35} 
+                          spy={true}  
+                          activeClass='active-tab'
+                          onClick={closeMenu}>
+                          ¿Es para mí?
                         </ScrollLink>
                       </li>
-                      */}
                       <li>
                         <RouterLink to="/blog" onClick={closeMenu}>
                           Blog
@@ -126,7 +147,10 @@ const NavBar = ({ static: isStatic = false }: { static?: boolean }) => {
                   ) : (
                     <ul className={navLinksClass}>
                       <li>
-                        <RouterLink to="/#about" onClick={closeMenu}>
+                        <RouterLink 
+                          to="/#about"
+                          onClick={closeMenu}
+                        >
                           ¿Quién te Acompaña?
                         </RouterLink>
                       </li>

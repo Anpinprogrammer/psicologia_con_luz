@@ -51,12 +51,20 @@
     -webkit-overflow-scrolling:touch;
     scrollbar-width:none;
   }
+   .svc-ic{
+    margin-left:auto;
+    margin-right:auto;
+  }
   .svc-grid::-webkit-scrollbar{display:none}
   .svc{
     flex:0 0 100%;
     min-height:340px;
     padding:2rem 3.45rem;
     scroll-snap-align:start;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
   }
   .svc:hover{
     transform:none;
