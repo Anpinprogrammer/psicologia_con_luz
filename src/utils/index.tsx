@@ -3,7 +3,7 @@ import { Heart, Brain, Leaf } from 'lucide-react';
 
 const LOGO   = "img/logo2.jpeg";
 const HERO   = "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/N1QyCV9DrYsFR4irNtOO/media/695d858dde2c147f3048c2af.png";
-const AB1    = "img/psicologa_demo.jpg";
+const AB1    = "img/aboutpic.png";
 const AB2    = "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/N1QyCV9DrYsFR4irNtOO/media/69690d89eaddec384182a1a8.png";
 const FORYOU = "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/N1QyCV9DrYsFR4irNtOO/media/695d8ceede2c14687b4aad26.png";
 const H1     = "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/N1QyCV9DrYsFR4irNtOO/media/695d6242a8a91cebe9754fc8.png";
