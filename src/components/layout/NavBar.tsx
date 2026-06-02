@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router';
-import { Link as RouterLink, useNavigate} from 'react-router-dom';
+import { Link as RouterLink, useNavigate, NavLink} from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import { LOGO } from '../../utils';
 import AuthModal from '../ui/AuthModal';
@@ -79,9 +79,17 @@ const NavBar = ({ static: isStatic = false }: { static?: boolean }) => {
                     </ScrollLink>
                   </li>
                   <li>
-                    <RouterLink to="/blog" onClick={closeMenu}>
+                    <NavLink 
+                      to="/blog" 
+                      className={({ isActive }) => 
+                        isActive 
+                          ? 'active-tab'
+                          : ''
+                      }
+                      onClick={closeMenu}
+                    >
                       Blog
-                    </RouterLink>
+                    </NavLink>
                   </li>
                 </ul>
               </>
@@ -139,9 +147,17 @@ const NavBar = ({ static: isStatic = false }: { static?: boolean }) => {
                         </ScrollLink>
                       </li>
                       <li>
-                        <RouterLink to="/blog" onClick={closeMenu}>
+                        <NavLink 
+                          to="/blog" 
+                          className={({ isActive }) => 
+                            isActive 
+                            ? 'active-tab'
+                            : ''
+                          }
+                          onClick={closeMenu}
+                        >
                           Blog
-                        </RouterLink>
+                        </NavLink>
                       </li>
                     </ul>
                   ) : (
@@ -164,18 +180,23 @@ const NavBar = ({ static: isStatic = false }: { static?: boolean }) => {
                           Planes
                         </RouterLink>
                       </li>
-                      {/**
-                       * 
                       <li>
-                        <RouterLink to="/#team" onClick={closeMenu}>
-                          Nuestro Equipo
+                        <RouterLink to="/#foryou" onClick={closeMenu}>
+                          ¿Es para mí?
                         </RouterLink>
                       </li>
-                       */}
                       <li>
-                        <RouterLink to="/blog" onClick={closeMenu}>
+                        <NavLink 
+                          to="/blog" 
+                          className={({ isActive }) => 
+                            isActive 
+                            ? 'active-tab'
+                            : ''
+                          }
+                          onClick={closeMenu}
+                        >
                           Blog
-                        </RouterLink>
+                        </NavLink>
                       </li>
                     </ul>
                   )

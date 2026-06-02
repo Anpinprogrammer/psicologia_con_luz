@@ -31,7 +31,7 @@ const FullScreen = () => {
               to={'/agendar-cita'}
               className='bg-amber'
             >
-              Agenda tu espacio →
+              Agenda tu espacio <span>→</span>
             </RouterLink>
             <ScrollerLink
               to='services'

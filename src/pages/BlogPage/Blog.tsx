@@ -141,8 +141,8 @@ export default function Blog() {
                 <Sparkles size={14} aria-hidden="true" />
                 Recursos para tu proceso
               </span>
-              <h1 id="blog-title" className="blog-title">
-                Lecturas y videos para cuidar tu bienestar emocional
+              <h1 id="blog-title" className="blog-title st">
+                Lecturas y videos para <em>cuidar tu bienestar</em> emocional
               </h1>
               <p className="blog-intro">
                 Un espacio de artículos, prácticas breves y reflexiones
