@@ -31,7 +31,7 @@ const StepPersonal = ({ data, setData, errors } : DataTransmiting) => {
         <input type="tel" value={data.tel} onChange={ev=>up("tel",ev.target.value)}
           className={errors.tel?"err":""} placeholder="+57 300 000 0000"/>
       </Field>
-      <Field label="¿Cómo te enteraste de Mindheart?">
+      <Field label="¿Cómo te enteraste de Psicologia con Luz?">
         <select value={data.fuente} onChange={ev=>up("fuente",ev.target.value)}>
           <option value="">Selecciona una opción</option>
           {["Instagram","TikTok","Recomendación de alguien","Google","Podcast","Otra"].map(f=>(
@@ -39,7 +39,7 @@ const StepPersonal = ({ data, setData, errors } : DataTransmiting) => {
           ))}
         </select>
       </Field>
-      <Field label="¿Algo que quieras contarnos antes?" >
+      <Field label="¿Cuál es el motivo de tu consulta?" >
         <textarea value={data.nota} onChange={ev=>up("nota",ev.target.value)} rows={2}
           placeholder="Cuéntanos brevemente qué te trae aquí, si lo deseas…"/>
       </Field>

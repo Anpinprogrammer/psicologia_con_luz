@@ -1,6 +1,7 @@
 import NavBar from '../layout/NavBar'
 import { Link as RouterLink } from 'react-router-dom'
 import { Link as ScrollerLink } from 'react-scroll'
+import { MoveRight } from 'lucide-react'
 
 import './styles/FullScreen.css'
 
@@ -29,9 +30,10 @@ const FullScreen = () => {
           <div className="hero-btns fu d3">
             <RouterLink
               to={'/agendar-cita'}
-              className='bg-amber'
+              className='bg-amber btn-primary'
             >
-              Agenda tu espacio <span>→</span>
+              <p>Agenda tu espacio</p>
+              <span><MoveRight size={18} /></span>
             </RouterLink>
             <ScrollerLink
               to='services'
