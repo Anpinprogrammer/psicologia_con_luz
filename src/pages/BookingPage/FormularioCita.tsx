@@ -33,18 +33,16 @@ const FormularioCita = () => {
         modalidad: '', 
         zona: '',
         fecha: '',
-        hora: '',
-        consent: ''
+        hora: ''
     });
     const [data, setData]   = useState({
-     nombre:"", email:"", tel:"", pais:"", fuente:"", nota:"",
-      svc:"", terapeuta:"", modalidad:"virtual",
+     nombre:"", email:"", tel:"", pais:"", fuente:"", reason:"",
+      svc:"", modalidad:"virtual",
       zona:"",
-      fecha:"", hora:"",
-      consent:false,
+      fecha:"", hora:""
     });
   
-    const svc = SERVICES.find(s=>s.id===data.svc);
+  const svc = SERVICES.find(s=>s.id===data.svc);
   const progress = done ? 100 : ((step) / STEPS.length) * 100;
   const meta = STEP_META[step];
 
@@ -68,8 +66,8 @@ const FormularioCita = () => {
         modalidad: '', 
         zona: '',
         fecha: '',
-        hora: '',
-        consent: ''});
+        hora: ''
+      });
       if(step < STEPS.length - 1) setStep(s => s + 1);
       else {
         const formData : Appointment = {
@@ -78,17 +76,14 @@ const FormularioCita = () => {
           email: data.email,
           telefono: data.tel,
           pais: data.pais,
-          servicio: data.svc,
+          source: data.fuente,
+          plan: data.svc,
           modalidad: data.modalidad,
+          zona: data.modalidad === 'presencial' ? data.zona : null,
           appointment_date: data.fecha,
           appointment_time: data.hora,
-          note: data.modalidad === 'presencial' && data.zona
-            ? `${data.nota ? `${data.nota}\n` : ''}Zona presencial: ${data.zona}`
-            : data.nota,
-          consent: data.consent
+          motivo: data.reason
         }
-
-        console.log(formData)
         try {
           const { error } = await create(formData)
           if(!error) setDone(true);
@@ -109,8 +104,8 @@ const FormularioCita = () => {
         modalidad: '', 
         zona: '',
         fecha: '',
-        hora: '',
-        consent: ''}); 
+        hora: ''
+      }); 
       setStep(s => s - 1); 
     }
   

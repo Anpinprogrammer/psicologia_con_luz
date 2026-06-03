@@ -40,7 +40,7 @@ const StepPersonal = ({ data, setData, errors } : DataTransmiting) => {
         </select>
       </Field>
       <Field label="¿Cuál es el motivo de tu consulta?" >
-        <textarea value={data.nota} onChange={ev=>up("nota",ev.target.value)} rows={2}
+        <textarea value={data.reason} onChange={ev=>up("reason",ev.target.value)} rows={2}
           placeholder="Cuéntanos brevemente qué te trae aquí, si lo deseas…"/>
       </Field>
     </div>

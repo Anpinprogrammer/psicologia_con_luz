@@ -96,9 +96,9 @@ const FOR_ITEMS = [
 ];
 
 const SERVICES = [
-  { id:"espacio-inicial", icon:"🌿", name:"Espacio inicial", price:"A confirmar", dur:"1 sesión individual" },
-  { id:"acompanamiento",  icon:"🧠", name:"Proceso de acompañamiento", price:"A confirmar", dur:"4 sesiones individuales", popular:true },
-  { id:"continuo",        icon:"♡", name:"Proceso terapéutico continuo", price:"A confirmar", dur:"8 sesiones individuales" },
+  { id:"1", icon:"🌿", name:"Espacio inicial", price:"A confirmar", dur:"1 sesión individual" },
+  { id:"2",  icon:"🧠", name:"Proceso de acompañamiento", price:"A confirmar", dur:"4 sesiones individuales", popular:true },
+  { id:"3",        icon:"♡", name:"Proceso terapéutico continuo", price:"A confirmar", dur:"8 sesiones individuales" },
 ];
 
 const THERAPISTS = [
@@ -124,9 +124,9 @@ const SLOTS = [
 
 const STEPS = [
   { num:1, label:"Tu información",    sub:"Datos de contacto" },
-  { num:2, label:"Tipo de sesión",    sub:"Servicio y terapeuta" },
+  { num:2, label:"Plan",    sub:"Selecciona tu plan" },
   { num:3, label:"Fecha y hora",      sub:"Elige disponibilidad" },
-  { num:4, label:"Confirmación",      sub:"Revisa y confirma" },
+  //{ num:4, label:"Confirmación",      sub:"Revisa y confirma" },
 ];
 
 const STEP_META : StepMeta[] = [
@@ -146,14 +146,12 @@ function validate(step: number, d : {
     tel: string;
     pais: string;
     fuente: string;
-    nota: string;
+    reason: string;
     svc: string;
-    terapeuta: string;
     modalidad: string;
     zona: string;
     fecha: string;
     hora: string;
-    consent: boolean;
 }) {
   const e : {
     nombre: string;
@@ -165,7 +163,6 @@ function validate(step: number, d : {
     zona: string;
     fecha: string;
     hora: string;
-    consent: string;
   } = {
     nombre: '',
     email: '',
@@ -176,7 +173,6 @@ function validate(step: number, d : {
     zona: '',
     fecha: '',
     hora: '',
-    consent: ''
   };
   if(step===0){
     if(!d.nombre.trim())  e.nombre="Requerido";
@@ -193,26 +189,23 @@ function validate(step: number, d : {
     if(!d.fecha)  e.fecha="Selecciona una fecha";
     if(!d.hora)   e.hora="Selecciona un horario";
   }
-  if(step===3){
-    if(!d.consent) e.consent="Debes aceptar para continuar";
-  }
   return e;
 }
 
 /* ── VALIDATION ── */
 function validateStep(step: number, data: {
   nombre: string;
-    email: string;
-    telefono: string;
-    pais: string;
-    fuente: string;
-    mensaje: string;
-    servicio: string;
-    terapeuta: string;
-    modalidad: string;
-    fecha: string;
-    hora: string;
-    consentimiento: boolean;
+  email: string;
+  telefono: string;
+  pais: string;
+  fuente: string;
+  mensaje: string;
+  servicio: string;
+  terapeuta: string;
+  modalidad: string;
+  fecha: string;
+  hora: string;
+  consentimiento: boolean;
 }) {
   const errs : {
     nombre: string;

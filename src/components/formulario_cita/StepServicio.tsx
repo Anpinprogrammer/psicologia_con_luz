@@ -4,15 +4,15 @@ import { type DataTransmiting } from '../../types';
 import { SERVICES } from '../../utils';
 
 const packageIcons = {
-  'espacio-inicial': <Leaf size={30} />,
-  acompanamiento: <Brain size={30} />,
-  continuo: <Heart size={30} />,
+  '1': <Leaf size={30} />,
+  '2': <Brain size={30} />,
+  '3': <Heart size={30} />,
 };
 
 const packageBadges = {
-  'espacio-inicial': '1 sesión',
-  acompanamiento: '4 sesiones',
-  continuo: '8 sesiones',
+  '1': '1 sesión',
+  '2' : '4 sesiones',
+  '3' : '8 sesiones',
 };
 
 const modalityOptions = [

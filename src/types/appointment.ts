@@ -4,11 +4,13 @@ export type Appointment = {
   email: string
   telefono: string
   pais: string
-  servicio: string
+  source: string
+  status?: string
+  plan: string
   modalidad: string
   appointment_date: string
   appointment_time: string
   meeting_url?:string
-  note?:string
-  consent: boolean
+  motivo?:string
+  zona?: string | null
 }

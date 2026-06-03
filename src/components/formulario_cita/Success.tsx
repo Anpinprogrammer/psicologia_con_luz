@@ -13,14 +13,12 @@ interface SuccessProps {
     tel: string;
     pais: string;
     fuente: string;
-    nota: string;
+    reason: string;
     svc: string;
-    terapeuta: string;
     modalidad: string;
     zona: string;
     fecha: string;
     hora: string;
-    consent: boolean;
 }
 }
 
