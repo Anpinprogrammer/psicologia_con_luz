@@ -1,77 +1,49 @@
-import NavBar from '../layout/NavBar'
-import { Link as RouterLink } from 'react-router-dom'
-import { Link as ScrollerLink } from 'react-scroll'
+import { Link } from 'react-router-dom'
 import { MoveRight } from 'lucide-react'
-
+import NavBar from '../layout/NavBar'
 import './styles/FullScreen.css'
 
-const FullScreen = () => {
-  return (
-    <div className="hero-wrap" id='home'>
-        {/* Background image */}
-        <div className="hero-bg" />
+const highlights = [
+  { title: '+500', description: 'Procesos acompañados con empatía y compromiso' },
+  { title: 'Humano', description: 'Psicología cercana, desde lo humano' },
+  { title: 'Virtual', description: 'Sesiones desde cualquier lugar' },
+  { title: 'Presencial', description: 'Atención en Santiago de Cali' },
+] as const
 
-        {/* NAV — sits inside the hero, transparent */}
-        <NavBar />
-
-        {/* Hero message */}
-        <div className="hero-content">
-          <div className="tag fu hero-eyebrow">Comprender, sentir y transformar 🧠💛</div>
-
-          <h1 className="hero-title fu d1">
-            Acompañamiento psicológico desde lo humano,<br className="hero-title-break" />
-            <span className="line2">la escucha y el bienestar emocional</span>
-          </h1>
-
-          <p className="hero-sub fu d2">
-            Un espacio para comprender lo que sientes, transformar pensamientos y construir herramientas para tu bienestar emocional.
-          </p>
-
-          <div className="hero-btns fu d3">
-            <RouterLink
-              to={'/agendar-cita'}
-              className='bg-amber btn-primary'
-            >
-              <p>Agenda tu espacio</p>
-              <span><MoveRight size={18} /></span>
-            </RouterLink>
-            <ScrollerLink
-              to='services'
-              className='bo-w'
-            >
-              ¿Cómo puedo acompañarte?
-            </ScrollerLink>
-          </div>
-        </div>
-
-        {/* Stats strip anchored to bottom */}
-        <div className="hero-stats fu d4">
-          {[
-            {
-              n: "+500",
-              l: "Procesos acompañados con empatía y compromiso"
-            },
-            {
-              n: "Humano 🧠",
-              l: "Psicología cercana, desde lo humano"
-            },
-            {
-              n: "Virtual 🌎",
-              l: "Sesiones desde cualquier lugar"
-            },
-            {
-              n: "Presencial 🇨🇴",
-              l: "Atención en Santiago de Cali"
-            }
-          ].map((s, i) => ( 
-            <div className="hero-stat" key={i}>
-              <div className="hn">{s.n}</div>
-              <div className="hl">{s.l}</div>
-            </div>
-          ))}
-        </div>
+const FullScreen = () => (
+  <>
+    <NavBar />
+  <div className="hero-wrap" id="home">
+    <div className="hero-bg" aria-hidden="true" />
+    <section className="hero-content" aria-labelledby="hero-title">
+      <p className="hero-eyebrow">Comprender, sentir y transformar</p>
+      <h1 className="hero-title" id="hero-title">
+        Acompañamiento psicológico desde lo humano,
+        <em>la escucha y el bienestar emocional</em>
+      </h1>
+      <p className="hero-sub">
+        Un espacio para comprender lo que sientes, transformar pensamientos y
+        construir herramientas para tu bienestar emocional.
+      </p>
+      <div className="hero-btns">
+        <Link to="/agendar-cita" className="hero-cta hero-cta-primary">
+          Agenda tu espacio <MoveRight size={18} aria-hidden="true" />
+        </Link>
+        <a href="#services" className="hero-cta hero-cta-secondary">
+          ¿Cómo puedo acompañarte?
+        </a>
       </div>
-  )
-}
+    </section>
+    <ul className="hero-stats" aria-label="Nuestro acompañamiento">
+      {highlights.map(({ title, description }) => (
+        <li className="hero-stat" key={title}>
+          <strong className="hero-stat-title">{title}</strong>
+          <p className="hero-stat-description">{description}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+  </>
+)
 
 export default FullScreen

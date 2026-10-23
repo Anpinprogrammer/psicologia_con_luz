@@ -1,7 +1,9 @@
 import { type StepMeta } from "../types";
 import { Heart, Brain, Leaf } from 'lucide-react';
 
-const LOGO   = "img/logo2.jpeg";
+const LOGO   = "img/logo_sin_fondo.png";
+const LOGO_SOLO = "img/logo_solo.png";
+const LOGO_NOMBRE = "img/logo_letras.png";
 const HERO   = "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/N1QyCV9DrYsFR4irNtOO/media/695d858dde2c147f3048c2af.png";
 const AB1    = "img/aboutpic.png";
 const AB2    = "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/N1QyCV9DrYsFR4irNtOO/media/69690d89eaddec384182a1a8.png";
@@ -335,6 +337,7 @@ export {
     T1,
     T2,
     LOGO,
+    LOGO_NOMBRE,
     HERO,
     AB1,
     AB2,
