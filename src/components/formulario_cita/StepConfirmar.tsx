@@ -12,6 +12,7 @@ const StepConfirmar = ({ data, setData, errors, dRef } : DataTransmiting) => {
   const svc=SERVICES.find(s=>s.id===data.svc);
   const mod=data.modalidad==="virtual"?"💻 Virtual":data.modalidad==="presencial"?"📍 Presencial":"—";
   const zone=data.zona==="zona-sur"?"Zona sur":data.zona==="zona-norte"?"Zona norte":"—";
+  
   return(
     <div className="step3-layout fade">
       <div>

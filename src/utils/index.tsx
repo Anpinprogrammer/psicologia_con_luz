@@ -2,7 +2,6 @@ import { type StepMeta } from "../types";
 import { Heart, Brain, Leaf } from 'lucide-react';
 
 const LOGO   = "img/logo_sin_fondo.png";
-const LOGO_SOLO = "img/logo_solo.png";
 const LOGO_NOMBRE = "img/logo_letras.png";
 const HERO   = "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/N1QyCV9DrYsFR4irNtOO/media/695d858dde2c147f3048c2af.png";
 const AB1    = "img/aboutpic.png";
@@ -154,6 +153,7 @@ function validate(step: number, d : {
     zona: string;
     fecha: string;
     hora: string;
+    consent: boolean;
 }) {
   const e : {
     nombre: string;
@@ -165,6 +165,7 @@ function validate(step: number, d : {
     zona: string;
     fecha: string;
     hora: string;
+    consent: string;
   } = {
     nombre: '',
     email: '',
@@ -175,6 +176,7 @@ function validate(step: number, d : {
     zona: '',
     fecha: '',
     hora: '',
+    consent: '',
   };
   if(step===0){
     if(!d.nombre.trim())  e.nombre="Requerido";
@@ -190,6 +192,9 @@ function validate(step: number, d : {
   if(step===2){
     if(!d.fecha)  e.fecha="Selecciona una fecha";
     if(!d.hora)   e.hora="Selecciona un horario";
+  }
+  if(step===3){
+    if(!d.consent) e.consent="Debes aceptar los términos para continuar";
   }
   return e;
 }

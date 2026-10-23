@@ -11,6 +11,7 @@ export type DataTransmiting = {
         zona: string;
         fecha: string;
         hora: string;
+        consent: boolean;
         };
     setData: React.Dispatch<React.SetStateAction<{
         nombre: string;
@@ -24,6 +25,7 @@ export type DataTransmiting = {
         zona: string;
         fecha: string;
         hora: string;
+        consent: boolean;
     }>>;
     errors: {
         nombre: string;
@@ -35,6 +37,7 @@ export type DataTransmiting = {
         zona: string;
         fecha: string;
         hora: string;
+        consent: string;
     };
     dRef? : React.RefObject<{
         nombre: string;
@@ -48,6 +51,7 @@ export type DataTransmiting = {
         zona: string;
         fecha: string;
         hora: string;
+        consent: boolean;
     }>;
 }
 

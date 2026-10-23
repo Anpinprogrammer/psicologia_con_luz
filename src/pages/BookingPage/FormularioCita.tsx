@@ -33,13 +33,14 @@ const FormularioCita = () => {
         modalidad: '', 
         zona: '',
         fecha: '',
-        hora: ''
+        hora: '',
+        consent: ''
     });
     const [data, setData]   = useState({
      nombre:"", email:"", tel:"", pais:"", fuente:"", reason:"",
       svc:"", modalidad:"virtual",
       zona:"",
-      fecha:"", hora:""
+      fecha:"", hora:"", consent:false
     });
   
   const svc = SERVICES.find(s=>s.id===data.svc);
@@ -66,7 +67,8 @@ const FormularioCita = () => {
         modalidad: '', 
         zona: '',
         fecha: '',
-        hora: ''
+        hora: '',
+        consent: ''
       });
       if(step < STEPS.length - 1) setStep(s => s + 1);
       else {
@@ -104,7 +106,8 @@ const FormularioCita = () => {
         modalidad: '', 
         zona: '',
         fecha: '',
-        hora: ''
+        hora: '',
+        consent: ''
       }); 
       setStep(s => s - 1); 
     }
