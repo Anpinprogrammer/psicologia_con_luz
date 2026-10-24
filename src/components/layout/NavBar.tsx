@@ -150,6 +150,7 @@ const NavBar = ({ static: isStatic = false }: NavBarProps) => {
           </button>
         )}
       </nav>
+      {menuOpen && <div className="nav-placeholder" aria-hidden="true" />}
       {/* <AuthModal isOpen={isOpen} onClose={close} initialView={view} /> */}
     </>
   )
