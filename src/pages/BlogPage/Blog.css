@@ -6,7 +6,7 @@
 }
 
 .blog-main {
-  padding-top: 92px;
+  padding-top: 0;
 }
 
 .blog-hero {
@@ -455,10 +455,6 @@
 }
 
 @media (max-width: 820px) {
-  .blog-main {
-    padding-top: 78px;
-  }
-
   .blog-hero {
     padding: 4rem 0 3rem;
   }

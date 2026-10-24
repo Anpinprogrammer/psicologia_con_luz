@@ -12,11 +12,11 @@ const StepPersonal = ({ data, setData, errors } : DataTransmiting) => {
     <>
     <div className="step-grid-2 fade">
       <Field label="Nombre completo" req error={errors.nombre}>
-        <input value={data.nombre} onChange={ev=>up("nombre",ev.target.value)}
+        <input autoComplete="name" name="nombre" value={data.nombre} onChange={ev=>up("nombre",ev.target.value)}
           className={errors.nombre?"err":""} placeholder="María García"/>
       </Field>
       <Field label="País de residencia" req error={errors.pais}>
-        <select value={data.pais} onChange={ev=>up("pais",ev.target.value)} className={errors.pais?"err":""}>
+        <select autoComplete="country-name" name="pais" value={data.pais} onChange={ev=>up("pais",ev.target.value)} className={errors.pais?"err":""}>
           <option value="">Selecciona...</option>
           {["Colombia","México","Argentina","Chile","España","Estados Unidos","Venezuela","Perú","Ecuador","Otro"].map(p=>(
             <option key={p}>{p}</option>
@@ -24,14 +24,14 @@ const StepPersonal = ({ data, setData, errors } : DataTransmiting) => {
         </select>
       </Field>
       <Field label="Correo electrónico" req error={errors.email}>
-        <input type="email" value={data.email} onChange={ev=>up("email",ev.target.value)}
+        <input autoComplete="email" name="email" type="email" value={data.email} onChange={ev=>up("email",ev.target.value)}
           className={errors.email?"err":""} placeholder="maria@ejemplo.com"/>
       </Field>
       <Field label="Teléfono / WhatsApp" req error={errors.tel}>
-        <input type="tel" value={data.tel} onChange={ev=>up("tel",ev.target.value)}
+        <input autoComplete="tel" name="tel" type="tel" value={data.tel} onChange={ev=>up("tel",ev.target.value)}
           className={errors.tel?"err":""} placeholder="+57 300 000 0000"/>
       </Field>
-      <Field label="¿Cómo te enteraste de Psicologia con Luz?">
+      <Field label="¿Cómo te enteraste de Psicología con luz?">
         <select value={data.fuente} onChange={ev=>up("fuente",ev.target.value)}>
           <option value="">Selecciona una opción</option>
           {["Instagram","TikTok","Recomendación de alguien","Google","Podcast","Otra"].map(f=>(
@@ -39,7 +39,7 @@ const StepPersonal = ({ data, setData, errors } : DataTransmiting) => {
           ))}
         </select>
       </Field>
-      <Field label="¿Cuál es el motivo de tu consulta?" >
+      <Field label="¿Cuál es el motivo de tu consulta?" fullWidth>
         <textarea value={data.reason} onChange={ev=>up("reason",ev.target.value)} rows={2}
           placeholder="Cuéntanos brevemente qué te trae aquí, si lo deseas…"/>
       </Field>

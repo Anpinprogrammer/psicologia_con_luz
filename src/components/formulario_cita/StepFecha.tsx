@@ -16,13 +16,13 @@ const StepFecha = ({ data, setData, errors }: DataTransmiting) => {
       {errors.fecha && <p style={{ color:"#C03030", fontSize:"0.78rem", marginBottom:"0.4rem" }}>{errors.fecha}</p>}
       <div className="date-strip">
         {days.map((d, i) => (
-          <div key={i}
+          <button key={i} type="button" aria-pressed={data.fecha === d.sql} aria-label={`Seleccionar fecha ${d.sql}`}
             className={`date-chip${data.fecha === d.sql ? " selected" : ""}`}
             onClick={() => up("fecha", d.sql)}>
-            <div className="dc-day">{d.day}</div>
-            <div className="dc-num">{d.num}</div>
-            <div className="dc-day" style={{ fontSize:"0.62rem", marginTop:"1px" }}>{d.month}</div>
-          </div>
+            <span className="dc-day">{d.day}</span>
+            <span className="dc-num">{d.num}</span>
+            <span className="dc-day" style={{ fontSize:"0.62rem", marginTop:"1px" }}>{d.month}</span>
+          </button>
         ))}
       </div>
 
@@ -32,11 +32,11 @@ const StepFecha = ({ data, setData, errors }: DataTransmiting) => {
       {errors.hora && <p style={{ color:"#C03030", fontSize:"0.78rem", marginBottom:"0.4rem" }}>{errors.hora}</p>}
       <div className="slots-grid">
         {SLOTS.map((s, i) => (
-          <div key={i}
+          <button key={i} type="button" disabled={!s.available} aria-pressed={data.hora === s.time}
             className={`slot${!s.available ? " unavailable" : data.hora === s.time ? " selected" : ""}`}
             onClick={() => s.available && up("hora", s.time)}>
             {s.time}
-          </div>
+          </button>
         ))}
       </div>
       <p style={{ fontSize:"0.74rem", color: "var(--muted)", fontWeight:300 }}>

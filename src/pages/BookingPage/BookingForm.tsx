@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { useAppointments } from '../../hooks/useAppointments';
 import type { Appointment } from '../../types/appointment';
-import { CSSTransition } from 'react-transition-group'; 
-//import { useNavigate } from 'react-router-dom';
 
 import { STEPS, SERVICES, STEP_META, validate } from '../../utils';
 
@@ -13,15 +12,18 @@ import StepFecha from '../../components/formulario_cita/StepFecha';
 import StepConfirmar from '../../components/formulario_cita/StepConfirmar';
 import NavBar from '../../components/layout/NavBar';
 
-import './FormularioCita.css'
+import './BookingForm.css'
 import '../../components/formulario_cita/styles/Field.css'
 
-const FormularioCita = () => {
+const BookingForm = () => {
 
+  const [searchParams] = useSearchParams()
+  const initialPlan = SERVICES.find(service => service.id === searchParams.get('plan'))?.id ?? ''
   const { create } = useAppointments()
-  const nodeRef = useRef(null)
+  const contentRef = useRef<HTMLDivElement>(null)
+  const [submitting, setSubmitting] = useState(false)
+  const [submissionError, setSubmissionError] = useState('')
 
-  //const navigate = useNavigate();
   const [step, setStep]   = useState(0);
     const [done, setDone]   = useState(false);
     const [errs, setErrs]   = useState({
@@ -38,13 +40,13 @@ const FormularioCita = () => {
     });
     const [data, setData]   = useState({
      nombre:"", email:"", tel:"", pais:"", fuente:"", reason:"",
-      svc:"", modalidad:"virtual",
+      svc:initialPlan, modalidad:"virtual",
       zona:"",
       fecha:"", hora:"", consent:false
     });
   
   const svc = SERVICES.find(s=>s.id===data.svc);
-  const progress = done ? 100 : ((step) / STEPS.length) * 100;
+  const progress = done ? 100 : ((step + 1) / STEPS.length) * 100;
   const meta = STEP_META[step];
 
     useEffect(() => {
@@ -56,9 +58,14 @@ const FormularioCita = () => {
     useEffect(() => { dataRef.current = data; }, [data]);
   
     async function next(){
+      if (submitting) return
       const latest = dataRef.current;
       const e = validate(step, latest);
-      if(Object.values(e).some(value => value)) { setErrs(e); return; }
+      if(Object.values(e).some(value => value)) {
+        setErrs(e)
+        requestAnimationFrame(() => contentRef.current?.querySelector<HTMLElement>('[aria-invalid="true"], .err')?.focus())
+        return
+      }
       setErrs({nombre: '',
         email: '',
         tel: '',
@@ -86,12 +93,17 @@ const FormularioCita = () => {
           appointment_time: data.hora,
           motivo: data.reason
         }
+        setSubmitting(true)
+        setSubmissionError('')
         try {
           const { error } = await create(formData)
-          if(!error) setDone(true);
+          if (error) setSubmissionError('No pudimos guardar tu cita. Inténtalo de nuevo.')
+          else setDone(true)
 
-        } catch (error) {
-          console.log(error)
+        } catch {
+          setSubmissionError('No pudimos guardar tu cita. Inténtalo de nuevo.')
+        } finally {
+          setSubmitting(false)
         }
         
       }
@@ -113,25 +125,18 @@ const FormularioCita = () => {
     }
   
     return(
-      <CSSTransition
-        in={true}
-        appear
-        timeout={650}
-        classNames="page"
-        nodeRef={nodeRef}
-        unmountOnExit
-      >
-      <div className="page-wrapper" ref={nodeRef} >
+      <div className="booking-form page-wrapper">
         <NavBar static />
 
         {/* ── PROGRESS STEPS ── */}
         {!done && (
-          <div className="progress-shell">
-            <div className="progress-steps">
+          <div className="progress-shell" aria-label="Progreso de la reserva">
+            <p className="progress-mobile" role="status">Paso {step + 1} de {STEPS.length}: <strong>{STEPS[step].label}</strong></p>
+            <ol className="progress-steps">
               {STEPS.map((s,i)=>{
                 const state = i < step ? "done" : i === step ? "active" : "pending";
                 return(
-                  <div key={i} className={`prog-step ${state}`}>
+                  <li key={i} className={`prog-step ${state}`} aria-current={i === step ? 'step' : undefined}>
                     <div className="prog-num">
                       {state==="done" ? "✓" : s.num}
                     </div>
@@ -139,36 +144,36 @@ const FormularioCita = () => {
                       <strong>{s.label}</strong>
                       <span>{s.sub}</span>
                     </div>
-                  </div>
+                  </li>
                 );
               })}
-            </div>
-            <div className="prog-bar-wrap">
+            </ol>
+            <div className="prog-bar-wrap" role="progressbar" aria-label="Paso de la reserva" aria-valuemin={1} aria-valuemax={STEPS.length} aria-valuenow={step + 1}>
               <div className="prog-bar-line" style={{width:`${progress}%`}}/>
             </div>
           </div>
         )}
   
         {/* ── MAIN CONTENT ── */}
-        <main className="f-main">
+        <div className="f-main" ref={contentRef}>
           <div className="f-card">
   
             {done ? (
               <Success d={data} />
             ) : (
-              <>
+              <form noValidate aria-labelledby="booking-step-title" aria-busy={submitting} onSubmit={event => { event.preventDefault(); void next() }}>
                 {/* Card header */}
                 <div className="f-card-head">
                   <div className="f-card-head-left">
-                    <div className="step-tag">{meta.tag}</div>
-                    <h2 className="f-card-title">{meta.title}</h2>
+                    <div className="step-tag">Paso {step + 1} de {STEPS.length}</div>
+                    <h1 className="f-card-title" id="booking-step-title">{meta.title}</h1>
                     <p className="f-card-sub">{meta.sub}</p>
                   </div>
                   {step > 0 && svc && (
                     <div className="f-card-head-right">
                       <div className="selected-badge">
                         <div className="sb-label">Servicio seleccionado</div>
-                        <div className="sb-val">{svc.icon} {svc.name} · {svc.price}</div>
+                        <div className="sb-val">{svc.name} · {svc.price}</div>
                       </div>
                     </div>
                   )}
@@ -182,33 +187,31 @@ const FormularioCita = () => {
                   {step===3 && <StepConfirmar data={data} setData={setData} errors={errs} dRef={dataRef}/>}
                 </div>
   
+                {submissionError && <p className="booking-form__error" role="alert">{submissionError}</p>}
                 {/* Action row */}
                 <div className="action-row">
                   <div className="action-left">
                     {step > 0 && (
-                      <button className="btn-prev" onClick={prev}>← Anterior</button>
+                      <button type="button" className="btn-prev" disabled={submitting} onClick={prev}>← Anterior</button>
                     )}
                     <span className="action-hint">
-                      {step===0 && "Tus datos están protegidos y son confidenciales"}
-                      {step===1 && "Puedes cambiar el servicio en cualquier momento"}
-                      {step===2 && "Horario en tu zona local · sin domingos"}
-                      {step===3 && "Al confirmar recibirás un correo de verificación"}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="3" /><path d="M8 10V7a4 4 0 0 1 8 0v3M12 15v2" /></svg>
+                      Tus datos están protegidos y son confidenciales
                     </span>
                   </div>
                   <div className="action-right">
-                    <button className="btn-next" onClick={next}>
-                      {step < STEPS.length-1 ? "Continuar →" : "Confirmar mi cita ✓"}
+                    <button type="submit" className="btn-next" disabled={submitting}>
+                      {submitting ? "Guardando tu cita…" : step < STEPS.length-1 ? "Continuar →" : "Confirmar mi cita ✓"}
                     </button>
                   </div>
                 </div>
-              </>
+              </form>
             )}
   
           </div>
-        </main>
+        </div>
       </div>
-      </CSSTransition>
     );
 }
 
-export default FormularioCita
+export default BookingForm

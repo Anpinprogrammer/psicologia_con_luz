@@ -88,12 +88,12 @@ const TESTS = [
 ];
 
 const FOR_ITEMS = [
-  { t:"🌱 Hay emociones que te cuesta entender o expresar.",      d:"Estás listo o lista para tomar responsabilidad de tu vida y sanar viejas heridas que te encadenan." },
-  { t:"🧠 Sientes que tu mente no descansa o que estás cargando demasiado.",   d:"Te sientes agotada, culpable o emocionalmente desbordada. Necesitas un espacio solo para ti, sin juicio." },
-  { t:"💛 Te gustaría fortalecer autoestima, límites o bienestar emocional.",     d:"Quieres frenar tus automáticos y darle a tu hijo o hija lo que no recibiste, aún sin saber muy bien cómo." },
-  { t:"👶 Tu hijo(a) está atravesando cambios emocionales, conductuales o dificultades para expresar lo que siente.",      d:"Maternidad, migración, separación, cambios laborales. Necesitas sostén emocional y un espacio seguro para integrar lo que está cambiando." },
-  { t:"✨ Estás pasando por situaciones que han afectado tu tranquilidad, relaciones o forma de verte a ti mismo.", d:"Quieres comprender las conductas infantiles y fortalecer el vínculo desde una mirada respetuosa." },
-  { t:"🤍 Necesitas un espacio donde sentirte escuchado sin juicio.",          d:"Vives con burnout, desconexión o cansancio profundo, y necesitas regularte y reencontrarte contigo." },
+  { t:"Hay emociones que te cuesta entender o expresar.",      d:"Estás listo o lista para tomar responsabilidad de tu vida y sanar viejas heridas que te encadenan." },
+  { t:"Sientes que tu mente no descansa o que estás cargando demasiado.",   d:"Te sientes agotada, culpable o emocionalmente desbordada. Necesitas un espacio solo para ti, sin juicio." },
+  { t:"Te gustaría fortalecer autoestima, límites o bienestar emocional.",     d:"Quieres frenar tus automáticos y darle a tu hijo o hija lo que no recibiste, aún sin saber muy bien cómo." },
+  { t:"Tu hijo(a) está atravesando cambios emocionales, conductuales o dificultades para expresar lo que siente.",      d:"Maternidad, migración, separación, cambios laborales. Necesitas sostén emocional y un espacio seguro para integrar lo que está cambiando." },
+  { t:"Estás pasando por situaciones que han afectado tu tranquilidad, relaciones o forma de verte a ti mismo.", d:"Quieres comprender las conductas infantiles y fortalecer el vínculo desde una mirada respetuosa." },
+  { t:"Necesitas un espacio donde sentirte escuchado sin juicio.",          d:"Vives con burnout, desconexión o cansancio profundo, y necesitas regularte y reencontrarte contigo." },
 ];
 
 const SERVICES = [

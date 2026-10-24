@@ -1,23 +1,28 @@
+import { useScrollAnimation, replayScrollAnimation } from '../../hooks/useScrollAnimation'
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router'
-import FullScreen from '../../components/landing/FullScreen'
-import Services from '../../components/landing/Services'
-import Packages from '../../components/landing/Packages'
-import ForYou from '../../components/landing/ForYou'
-import FaqBox from '../../components/landing/FaqBox'
+import AboutSection from '../../components/landing/AboutSection'
+import Hero from '../../components/landing/Hero'
+import ServicesSection from '../../components/landing/ServicesSection'
+import PricingSection from '../../components/landing/PricingSection'
+import ProcessSection from '../../components/landing/ProcessSection'
+import IsItForMeSection from '../../components/landing/IsItForMeSection'
+import TrustSection from '../../components/landing/TrustSection'
+import FAQSection from '../../components/landing/FAQSection'
+import FinalCTASection from '../../components/landing/FinalCTASection'
 
-import { AB1, H1, H2, H3, TESTS, FAQS } from '../../utils'
 import './Landing.css'
 
 const LandingPage = () => {
 
+  useScrollAnimation()
   const location = useLocation()
 
   useEffect(() => {
     if (!location.hash) return
 
     const id = location.hash.replace('#', '')
+    replayScrollAnimation(id)
     const timer = window.setTimeout(() => {
       document.getElementById(id)?.scrollIntoView({
         behavior: 'smooth',
@@ -30,66 +35,17 @@ const LandingPage = () => {
 
   return (
     <>
-        <FullScreen />
+        <Hero />
 
-        {/* ══════ ABOUT ══════ */}
-        <section className='section-bg' id='about' >
-            <div className="container">
-            <div className="about-g">
-                <div className="about-iw">
-                <img src={AB1} alt="Mindheart Therapy" className="about-img" />
-                <div className="about-fl">
-                    <div className="fn" style={{ fontFamily:"'Playfair Display',serif" }}>+5</div>
-                    <div className="fl">años acompañando</div>
-                </div>
-                </div>
-                <div>
-                <span className="tag-light">Sobre mi</span>
-                <h2 className="st">Acompañar Procesos <em>Tambien</em> es Cuidar Historias</h2>
-                <p className="sb" style={{ marginBottom:"1rem" }}>
-                    Acompaño procesos emocionales en niños, adolescentes, jóvenes y adultos desde un enfoque cognitivo conductual con una mirada humana, cercana y consciente.
-                </p>
-                <p className='sb' style={{ marginBottom: "1rem" }}>
-                  Creo en la importancia de crear espacios terapéuticos seguros, donde cada persona pueda expresar lo que siente, comprender sus emociones y desarrollar herramientas para afrontar sus dificultades de una manera más saludable.
-                </p>
-                <p className="sb" style={{ marginBottom:"1.5rem" }}>
-                    El proceso terapéutico busca ayudarte a identificar patrones de pensamiento, comprender cómo influyen en tus emociones y conductas, y construir cambios conscientes que favorezcan tu bienestar emocional y tu calidad de vida. 💛 
-                </p>
-                <Link to="/agendar-cita" className="bo">Comienza tu proceso →</Link>
-                </div>
-            </div>
-            </div>
-        </section>
+        <AboutSection />
 
-        <Services />
+        <ServicesSection />
 
-        <Packages />
+        <PricingSection />
 
-        <ForYou />
+        <IsItForMeSection />
 
-        {/* ══════ HOW IT WORKS ══════ */}
-      <section className="how-bg">
-        <div className="container">
-          <div className="how-hd">
-            <span className="tag-inv" style={{ display:"inline-block", background:"rgba(74,101,128,0.22)", color:"#afc3d4", fontSize:"0.68rem", fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"0.34rem 0.95rem", borderRadius:"50px", marginBottom:"1.1rem" }}>El proceso</span>
-            <h2 className="st st-w">¿Cómo <em>funciona?</em></h2>
-          </div>
-          <div className="steps">
-            {[
-              { img:H1, n:"01", t:"Nos cuentas lo que buscas y escoges tu terapeuta", d:"Llenas un formulario y nosotros te llevamos a las opciones de terapeutas que se alineen contigo." },
-              { img:H2, n:"02", t:"Sesiones online y cuidadas",                        d:"Te conectas desde cualquier lugar al espacio más amoroso y sanador, 100% confidencial." },
-              { img:H3, n:"03", t:"Acompañamiento sostenido",                          d:"Ya nunca estarás sola. Avanzas a tu ritmo, con la posibilidad de continuar, ajustar o cambiar según lo que necesites." },
-            ].map((s, i) => (
-              <div className="step" key={i}>
-                <div className="step-n">{s.n}</div>
-                <img src={s.img} alt={s.t} className="step-img" />
-                <h3 className="step-t">{s.t}</h3>
-                <p className="step-d st">{s.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        <ProcessSection />
 
       {/* ══════ PILLARS ══════ 
       <section className='section-bg'>
@@ -140,57 +96,11 @@ const LandingPage = () => {
       </section>
       */}
 
-      {/* ══════ TESTIMONIALS ══════ */}
-      <section className='section-testimonials' style={{ background: '#F2EFF9' }} >
-        <div className="container">
-          <div className="test-hd">
-            <span className="tag-light">Confianza</span>
-            <h2 className="st">Confianza construida<br /><em>con cuidado</em></h2>
-          </div>
-          <p className="ethics">No utilizamos testimonios clínicos ni promesas de resultados, porque creemos que el cuidado emocional se sostiene desde la ética, no desde la exposición. Lo que sí ofrecemos es un marco claro, humano y responsable para acompañar procesos emocionales con respeto y sensibilidad.</p>
-          <div className="test-grid">
-            {TESTS.map((t, i) => (
-              <div className="test-c" key={i}>
-                <span className="qm">"</span>
-                <p className="qt">{t.q}</p>
-                <div className="qa">
-                  <strong>{t.a}</strong>
-                  <span>{t.r}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TrustSection />
 
-      {/* ══════ FAQ ══════ */}
-      <section className='section-bg' id='contact'>
-        <div className="container">
-          <div className="faq-w">
-            <div>
-              <span className="tag-light">Preguntas frecuentes</span>
-              <h2 className="st">Tus<br /><em>preguntas</em></h2>
-              <p className="sb" style={{ marginBottom:"2rem" }}>Si tienes más dudas, con gusto te acompañamos a resolverlas.</p>
-              <a href="#" className="bo">Contáctanos →</a>
-            </div>
-            <div className="faq-list">
-              {FAQS.map((f, i) => <FaqBox key={i} q={f.q} a={f.a} />)}
-            </div>
-          </div>
-        </div>
-      </section>
+      <FAQSection />
 
-      {/* ══════ CTA ══════ */}
-      <div className="cta-band">
-        <h2 className="st">Es momento de <br /><em>priorizar tu bienestar</em></h2>
-        <p>Agenda tu sesión y da el primer paso hacia una vida más saludable, física y emocionalmente.</p>
-        <Link
-          to={'/agendar-cita'}
-          className='bw'
-        > 
-          Agenda tu primera sesión →
-        </Link>
-      </div>
+      <FinalCTASection />
     </>
   )
 }

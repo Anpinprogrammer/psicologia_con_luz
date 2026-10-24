@@ -1,0 +1,80 @@
+/* Scoped booking surface: shared brand tokens, no new fonts or palette. */
+.booking-form { min-height: 100vh; background: var(--cream); }
+.booking-form .progress-shell { padding: 28px 32px 0; background: white; border-bottom: 1px solid var(--border); }
+.booking-form .progress-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 980px; margin: 0 auto 24px; padding: 0; list-style: none; }
+.booking-form .prog-step { position: relative; display: flex; align-items: flex-start; gap: 12px; padding-right: 20px; }
+.booking-form .prog-step:not(:last-child)::after { content: ''; position: absolute; top: 19px; left: 48px; right: 12px; height: 1px; background: var(--border); }
+.booking-form .prog-step.done::after { background: var(--gold); }
+.booking-form .prog-num { position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0; background: var(--lavLight); color: var(--mid); font-size: .85rem; font-weight: 700; }
+.booking-form .prog-step.active .prog-num { background: var(--amber); color: white; box-shadow: 0 0 0 4px var(--amberLight); }
+.booking-form .prog-step.done .prog-num { background: var(--lavender); color: white; }
+.booking-form .prog-label { position: relative; z-index: 1; padding: 0 6px; background: white; }
+.booking-form .prog-label strong { display: block; color: var(--dark); font-size: .82rem; line-height: 1.5; }
+.booking-form .prog-label span { display: block; color: var(--mid); font-size: .72rem; line-height: 1.5; }
+.booking-form .prog-bar-wrap { height: 3px; max-width: 980px; margin-inline: auto; background: var(--lavLight); }
+.booking-form .prog-bar-line { height: 100%; background: var(--gold); transition: width 300ms ease; }
+.booking-form .progress-mobile { display: none; }
+.booking-form .f-main { display: flex; justify-content: center; padding: 40px 32px 64px; }
+.booking-form .f-card { width: 100%; max-width: 980px; min-width: 0; border: 1px solid var(--border); border-radius: 24px; background: white; box-shadow: 0 12px 36px color-mix(in srgb, var(--lavender) 7%, transparent); }
+.booking-form .f-card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding: 32px; border-radius: 24px 24px 0 0; border-bottom: 1px solid var(--border); background: linear-gradient(135deg, var(--warm), var(--cream)); }
+.booking-form .f-card-head-left, .booking-form .f-card-head-right { min-width: 0; }
+.booking-form .step-tag { display: inline-flex; padding: 6px 12px; margin-bottom: 12px; border-radius: var(--radius-pill); background: var(--lavLight); color: var(--lavender); font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.booking-form .f-card-title { margin: 0; color: var(--dark); font: 500 clamp(1.6rem, 3vw, 2rem)/1.25 var(--font-serif); }
+.booking-form .f-card-title em { color: var(--amberDark); }
+.booking-form .f-card-sub { margin-top: 10px; color: var(--mid); font-size: .94rem; line-height: 1.65; }
+.booking-form .selected-badge { max-width: 280px; padding: 12px 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--amberLight); }
+.booking-form .sb-label { color: var(--mid); font-size: .7rem; line-height: 1.6; }
+.booking-form .sb-val { color: var(--amberDark); font-size: .83rem; font-weight: 700; line-height: 1.6; overflow-wrap: anywhere; }
+.booking-form .f-card-body { padding: 32px; }
+.booking-form .step-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 20px; }
+.booking-form .field { min-width: 0; width: 100%; gap: 8px; }
+.booking-form .field--full { grid-column: 1 / -1; }
+.booking-form .field label { color: var(--mid); font-size: .85rem; line-height: 1.5; letter-spacing: 0; }
+.booking-form .field :is(input, select, textarea) { width: 100%; min-width: 0; min-height: 48px; padding: 12px 16px; border: 1px solid rgb(0 0 0 / .08); border-radius: 12px; background-color: white; color: var(--dark); font: 400 1rem/1.5 var(--font-sans); transition: border-color 200ms ease, box-shadow 200ms ease; }
+.booking-form .field select { padding-right: 38px; }
+.booking-form .field textarea { min-height: 112px; resize: vertical; }
+.booking-form .field :is(input, textarea)::placeholder { color: var(--muted); opacity: 1; font-weight: 400; }
+.booking-form .field :is(input, select, textarea):focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 15%, transparent); }
+.booking-form .field [aria-invalid="true"] { border-color: #C84040; }
+.booking-form .field-error, .booking-form__error { color: #C03030; font-size: .8rem; line-height: 1.6; }
+.booking-form__error { padding: 0 32px 20px; }
+.booking-form .action-row { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 24px 32px; border-top: 1px solid var(--border); border-radius: 0 0 24px 24px; background: var(--cream); }
+.booking-form .action-left { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.booking-form .action-hint { display: flex; align-items: center; gap: 8px; color: var(--mid); font-size: .76rem; line-height: 1.6; }
+.booking-form .action-hint svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--amberDark); }
+.booking-form .action-right { flex-shrink: 0; }
+.booking-form :is(.btn-prev, .btn-next) { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; border: 1px solid var(--border); border-radius: var(--radius-pill); font: 700 .92rem/1.5 var(--font-sans); cursor: pointer; transition: background-color 200ms ease, box-shadow 200ms ease; }
+.booking-form .btn-prev { background: white; color: var(--mid); }
+.booking-form .btn-next { background: var(--amber); color: white; border-color: var(--amber); }
+.booking-form .btn-next:hover { background: var(--amberDark); box-shadow: 0 6px 18px color-mix(in srgb, var(--gold) 18%, transparent); }
+.booking-form .btn-prev:hover { background: var(--lavLight); }
+.booking-form button:disabled { opacity: .6; cursor: wait; }
+.booking-form :is(button, a, input[type="checkbox"]):focus-visible { outline: 3px solid var(--lavender); outline-offset: 3px; }
+.booking-form .date-chip { font-family: var(--font-sans); }
+.booking-form .date-chip > span { display: block; }
+.booking-form .slot { font-family: var(--font-sans); min-height: 48px; }
+.booking-form .sum-v { overflow-wrap: anywhere; }
+@media (max-width: 768px) {
+  .booking-form .progress-shell { padding: 20px 20px 0; }
+  .booking-form .progress-steps { display: none; }
+  .booking-form .progress-mobile { display: block; width: fit-content; margin: 0 auto 20px; padding: 8px 16px; border-radius: var(--radius-pill); background: var(--lavLight); color: var(--mid); font-size: .82rem; line-height: 1.6; text-align: center; }
+  .booking-form .progress-mobile strong { color: var(--dark); }
+  .booking-form .f-main { padding: 24px 16px 96px; }
+  .booking-form .f-card { border-radius: 20px; }
+  .booking-form .f-card-head { flex-direction: column; gap: 16px; padding: 24px 20px; border-radius: 20px 20px 0 0; }
+  .booking-form .selected-badge { max-width: none; }
+  .booking-form .f-card-body { padding: 24px 20px; }
+  .booking-form :is(.step-grid-2, .step-grid-3, .step2-layout, .step3-layout, .step1-bottom, .package-select-grid, .mod-row, .zone-row) { grid-template-columns: minmax(0, 1fr); width: 100%; gap: 20px; }
+  .booking-form :is(.span-2, .span-3, .field--full) { grid-column: 1 / -1; }
+  .booking-form .f-card-body > *, .booking-form .step2-layout > *, .booking-form .step3-layout > * { min-width: 0; }
+  .booking-form .field textarea { min-height: 112px; }
+  .booking-form .slot { min-height: 48px; }
+  .booking-form .action-row { flex-direction: column; align-items: stretch; gap: 20px; padding: 24px 20px; border-radius: 0 0 20px 20px; }
+  .booking-form .action-left { flex-direction: column; align-items: flex-start; }
+  .booking-form .action-right, .booking-form .btn-next { width: 100%; }
+  .booking-form .btn-next { padding: 14px; }
+  .booking-form__error { padding-inline: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .booking-form .prog-bar-line, .booking-form :is(input, select, textarea, button) { transition: none; }
+}

@@ -1,3 +1,4 @@
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 import { useEffect } from "react";
 import {
   BookOpen,
@@ -125,18 +126,19 @@ const getContentLabel = (type: BlogContentType) =>
   type === "video" ? "Video" : "Artículo";
 
 export default function Blog() {
+  useScrollAnimation();
 
   useEffect(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, []);
 
   return (
-    <div className="blog-page">
+    <div className="blog-page" id="blog">
       <NavBar />
       <main className="blog-main">
         <section className="blog-hero" aria-labelledby="blog-title">
           <div className="container blog-hero-grid">
-            <div className="blog-hero-copy">
+            <div className="blog-hero-copy" data-animate="lift">
               <span className="blog-eyebrow">
                 <Sparkles size={14} aria-hidden="true" />
                 Recursos para tu proceso
@@ -170,7 +172,7 @@ export default function Blog() {
 
         <section className="blog-featured-section">
           <div className="container">
-            <article className="blog-featured">
+            <article className="blog-featured" data-animate="lift">
               <div className="blog-featured-media">
                 <img src={featuredContent.image} alt={featuredContent.title} />
                 <span className="blog-type-badge">
@@ -210,8 +212,8 @@ export default function Blog() {
               </div>
 
               <div className="blog-grid">
-                {contentItems.map((item) => (
-                  <article className="blog-card" key={item.id}>
+                {contentItems.map((item, index) => (
+                  <article className="blog-card" key={item.id} data-animate="lift" data-delay={(index % 3) * 130}>
                     <div className="blog-card-media">
                       <img src={item.image} alt={item.title} />
                       <span className="blog-type-badge">

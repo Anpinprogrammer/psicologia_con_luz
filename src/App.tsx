@@ -9,7 +9,7 @@ import AuthLayout from './layouts/AuthLayout'
 //Paginas
 import LandingPage from './pages/LandingPage/LandingPage'
 import Blog from './pages/BlogPage/Blog'
-import FormularioCita from './pages/BookingPage/FormularioCita'
+import BookingForm from './pages/BookingPage/BookingForm'
 import LinkPublicPage from './pages/linktreepublic/LinkPublicPage'
 import LinkAdminPage from './pages/linktree/LinkAdminPage'
 import AuthCallback from './pages/AuthCallback'
@@ -33,7 +33,7 @@ function App() {
           <Route path='/' element={<PublicLayout />}>
             <Route index element={<LandingPage />} />
             <Route path='/blog' element={<Blog />}  />
-            <Route path='/agendar-cita' element={<FormularioCita />} />
+            <Route path='/agendar-cita' element={<BookingForm />} />
             <Route path='/linktree' element={<LinkPublicPage />} />
             <Route path='/linktree-admin' element={<LinkAdminPage />} />
           </Route>

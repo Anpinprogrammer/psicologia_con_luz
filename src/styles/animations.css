@@ -1,0 +1,68 @@
+/* Progressive enhancement: content remains visible without the observer.
+   Backwards fill covers stagger delays; completed animations release transforms
+   so existing hover effects and shadows keep working. */
+[data-animate].motion-ready:not(.is-visible) { opacity: 0; }
+[data-animate].motion-ready.is-visible {
+  animation: light-rise 760ms cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms) backwards;
+}
+[data-animate="badge"].motion-ready.is-visible { animation-name: light-badge; }
+[data-animate="focus"].motion-ready.is-visible { animation-name: light-focus; animation-duration: 950ms; }
+[data-animate="left"].motion-ready.is-visible { animation-name: light-left; }
+[data-animate="right"].motion-ready.is-visible { animation-name: light-right; }
+[data-animate="elevate"].motion-ready.is-visible { animation-name: light-elevate; animation-duration: 900ms; transform-origin: center bottom; }
+[data-animate="pop"].motion-ready.is-visible { animation-name: light-pop; animation-timing-function: cubic-bezier(.2, 1.25, .4, 1); }
+
+/* Hero: warm, downward badge and staggered title, copy and actions. */
+.hero-title > span[data-animate] { display: block; }
+@keyframes light-badge {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes light-rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes light-pop {
+  from { opacity: 0; transform: scale(.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+/* About: short-lived blur only during entry, never on a whole page. */
+@keyframes light-focus {
+  from { opacity: 0; filter: blur(8px); transform: scale(.98); }
+  to { opacity: 1; filter: blur(0); transform: scale(1); }
+}
+/* Services: small alternating offsets preserve carousel geometry. */
+@keyframes light-left {
+  from { opacity: 0; transform: translateX(-24px) rotateY(-3deg); }
+  to { opacity: 1; transform: translateX(0) rotateY(0); }
+}
+@keyframes light-right {
+  from { opacity: 0; transform: translateX(24px) rotateY(3deg); }
+  to { opacity: 1; transform: translateX(0) rotateY(0); }
+}
+/* Plans: native perspective and a shadow that resolves to the existing design. */
+@keyframes light-elevate {
+  from { opacity: 0; transform: perspective(1000px) translateY(24px) rotateX(10deg); box-shadow: 0 0 0 transparent; }
+  to { opacity: 1; transform: perspective(1000px) translateY(0) rotateX(0); }
+}
+
+/* Light overlay leaves the CTA's base color intact. */
+.hero-cta { position: relative; overflow: hidden; isolation: isolate; }
+.hero-cta::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(110deg, transparent 25%, rgb(255 255 255 / .3) 48%, transparent 72%);
+  transform: translateX(-130%);
+}
+.hero-cta:is(:hover, :focus-visible)::after { animation: light-shimmer 850ms ease-out; }
+@keyframes light-shimmer { to { transform: translateX(130%); } }
+.hero-stat { transition: translate 250ms ease, box-shadow 250ms ease; }
+.hero-stat:hover { translate: 0 -4px; box-shadow: 0 12px 28px color-mix(in srgb, var(--dark) 9%, transparent); }
+
+/* Keyboard focus must never land on visually hidden content. */
+[data-animate].motion-ready:focus-within { opacity: 1; animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  [data-animate].motion-ready { opacity: 1; animation: none; }
+  .hero-cta::after { display: none; }
+  .hero-stat { transition: none; }
+  .hero-stat:hover { translate: none; }
+}
