@@ -1,3 +1,4 @@
+import { WHATSAPP_NUMBER } from '../../config/contact'
 import { useId, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FAQS } from '../../utils'
@@ -6,7 +7,7 @@ import './styles/FAQSection.css'
 export default function FAQSection() {
   const [openQuestion, setOpenQuestion] = useState<number | null>(null)
   const id = useId()
-  const phone = String(import.meta.env.VITE_WHATSAPP_NUMBER ?? '').replace(/\D/g, '')
+  const phone = WHATSAPP_NUMBER
   const contactUrl = phone ? `https://wa.me/${phone}?text=${encodeURIComponent('Hola, tengo una pregunta sobre el acompañamiento psicológico.')}` : null
 
   return (

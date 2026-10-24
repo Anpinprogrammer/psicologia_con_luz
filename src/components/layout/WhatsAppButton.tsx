@@ -1,11 +1,9 @@
+import { WHATSAPP_NUMBER } from '../../config/contact'
 import './WhatsAppButton.css'
 
 const WhatsAppButton = () => {
-  const phone = String(import.meta.env.VITE_WHATSAPP_NUMBER ?? '').replace(/\D/g, '')
+  const phone = WHATSAPP_NUMBER
   const message = encodeURIComponent('Hola, quisiera información sobre el acompañamiento psicológico.')
-
-  // A real destination is required before exposing the contact action.
-  if (!phone) return null
 
   return (
     <a

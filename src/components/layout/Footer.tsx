@@ -1,3 +1,4 @@
+import { WHATSAPP_NUMBER } from '../../config/contact'
 import { useId, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { replayScrollAnimation } from '../../hooks/useScrollAnimation'
@@ -40,7 +41,7 @@ export default function Footer() {
   const location = useLocation()
   const socialTooltipId = useId()
   const [activeSocial, setActiveSocial] = useState<string | null>(null)
-  const phone = String(import.meta.env.VITE_WHATSAPP_NUMBER ?? '').replace(/\D/g, '')
+  const phone = WHATSAPP_NUMBER
   const socials = [
     { name: 'LinkedIn', href: externalUrl(import.meta.env.VITE_LINKEDIN_URL) },
     { name: 'Instagram', href: externalUrl(import.meta.env.VITE_INSTAGRAM_URL) },
