@@ -1,5 +1,5 @@
 /* Scoped booking surface: shared brand tokens, no new fonts or palette. */
-.booking-form { min-height: 100vh; background: var(--cream); }
+.booking-form { min-height: 100dvh; background: var(--cream); }
 .booking-form .progress-shell { padding: 28px 32px 0; background: white; border-bottom: 1px solid var(--border); }
 .booking-form .progress-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 980px; margin: 0 auto 24px; padding: 0; list-style: none; }
 .booking-form .prog-step { position: relative; display: flex; align-items: flex-start; gap: 12px; padding-right: 20px; }
@@ -158,4 +158,24 @@
   .booking-form .f-card-head { padding-block: 10px; }
   .booking-form .progress-shell { padding-top: 6px; }
   .booking-form .progress-mobile { margin-bottom: 6px; }
+}
+
+/* Keyboard-safe mobile viewport: the browser pans the visual viewport, not the page. */
+@media (max-width: 768px) {
+  .booking-form {
+    position: fixed;
+    top: var(--booking-viewport-offset, 0px);
+    left: 0;
+    width: 100%;
+    height: var(--booking-viewport-height, 100dvh);
+    min-height: 0;
+  }
+  .booking-form .f-card-body { overflow-anchor: none; scroll-padding-block: 24px; }
+  .booking-form[data-keyboard-open] .f-card-body { padding-bottom: 48px; }
+  .booking-form[data-keyboard-open] .f-card-sub { display: none; }
+  .booking-form[data-keyboard-open] .f-card-head { padding-block: 10px; }
+  .booking-form[data-keyboard-open] .progress-shell { padding-top: 6px; }
+  .booking-form[data-keyboard-open] .progress-mobile { margin-bottom: 6px; }
+  .booking-form[data-keyboard-open] .f-main { padding-block: 8px; }
+  .booking-form[data-keyboard-open] .action-row { padding-block: 8px; }
 }

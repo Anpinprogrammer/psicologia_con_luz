@@ -84,19 +84,80 @@ const BookingForm = () => {
       return () => cancelAnimationFrame(frame)
     }, [step, subStep])
 
-    // Fit the mobile form above the software keyboard as well as browser chrome.
+    // Keep keyboard movement inside the form instead of scrolling the document.
     useEffect(() => {
       if (!isMobile) return
       const viewport = window.visualViewport
       const element = bookingRef.current
-      const fitViewport = () => element?.style.setProperty('--booking-viewport-height', `${viewport?.height ?? window.innerHeight}px`)
+      if (!element) return
+      let frame = 0
+      let focusTimer = 0
+      let blurTimer = 0
+      let largestHeight = viewport?.height ?? window.innerHeight
+      let keyboardWasOpen = false
+      const isField = (target: Element | null): target is HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement =>
+        target instanceof HTMLElement && target.matches('input:not([type="radio"]):not([type="checkbox"]), select, textarea')
+
+      const centerField = (smooth = false) => {
+        const field = document.activeElement
+        if (!isField(field) || !element.contains(field)) return
+        const body = field.closest<HTMLElement>('.f-card-body')
+        if (!body) return
+        const bounds = body.getBoundingClientRect()
+        const input = field.getBoundingClientRect()
+        const position = body.scrollTop + input.top - bounds.top - Math.max(12, (bounds.height - input.height) / 2)
+        body.scrollTo({ top: Math.max(0, position), behavior: smooth && !window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'smooth' : 'instant' })
+      }
+      const fitViewport = () => {
+        cancelAnimationFrame(frame)
+        const height = viewport?.height ?? window.innerHeight
+        // Pinch zoom should not be mistaken for a software keyboard.
+        if (viewport && viewport.scale !== 1) return
+        largestHeight = Math.max(largestHeight, height)
+        const keyboardOpen = largestHeight - height > 120
+        element.style.setProperty('--booking-viewport-height', `${height}px`)
+        element.style.setProperty('--booking-viewport-offset', `${viewport?.offsetTop ?? 0}px`)
+        element.toggleAttribute('data-keyboard-open', keyboardOpen)
+        if (keyboardWasOpen && !keyboardOpen) window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+        keyboardWasOpen = keyboardOpen
+        frame = requestAnimationFrame(() => centerField())
+      }
+      const onFocus = (event: FocusEvent) => {
+        if (!isField(event.target as Element)) return
+        window.clearTimeout(blurTimer)
+        window.clearTimeout(focusTimer)
+        focusTimer = window.setTimeout(() => {
+          fitViewport()
+          centerField(true)
+        }, 300)
+      }
+      const onBlur = () => {
+        window.clearTimeout(focusTimer)
+        window.clearTimeout(blurTimer)
+        blurTimer = window.setTimeout(() => {
+          if (isField(document.activeElement) && element.contains(document.activeElement)) return
+          window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+          fitViewport()
+        }, 350)
+      }
       fitViewport()
+      element.addEventListener('focusin', onFocus)
+      element.addEventListener('focusout', onBlur)
       viewport?.addEventListener('resize', fitViewport)
+      viewport?.addEventListener('scroll', fitViewport)
       window.addEventListener('resize', fitViewport)
       return () => {
+        cancelAnimationFrame(frame)
+        window.clearTimeout(focusTimer)
+        window.clearTimeout(blurTimer)
+        element.removeEventListener('focusin', onFocus)
+        element.removeEventListener('focusout', onBlur)
         viewport?.removeEventListener('resize', fitViewport)
+        viewport?.removeEventListener('scroll', fitViewport)
         window.removeEventListener('resize', fitViewport)
-        element?.style.removeProperty('--booking-viewport-height')
+        element.style.removeProperty('--booking-viewport-height')
+        element.style.removeProperty('--booking-viewport-offset')
+        element.removeAttribute('data-keyboard-open')
       }
     }, [isMobile])
 
