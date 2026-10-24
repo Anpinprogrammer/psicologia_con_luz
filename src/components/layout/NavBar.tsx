@@ -1,8 +1,10 @@
 import { useEffect, useId, useRef, useState } from 'react'
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { Link as ScrollLink } from 'react-scroll'
-import AuthModal from '../ui/AuthModal'
-import { useAuthModal } from '../../hooks/useAuthModal'
+// Acceso de cuenta pausado; conservar para reactivarlo.
+// import { useNavigate } from 'react-router-dom'
+// import AuthModal from '../ui/AuthModal'
+// import { useAuthModal } from '../../hooks/useAuthModal'
 import { useAuthContext } from '../../context/AuthContext'
 import './navbar.css'
 import { replayScrollAnimation } from '../../hooks/useScrollAnimation'
@@ -22,11 +24,12 @@ const memberLinks = [
 type NavBarProps = { static?: boolean }
 
 const NavBar = ({ static: isStatic = false }: NavBarProps) => {
-  const { user, signOut, loading } = useAuthContext()
-  const { isOpen, view, open, close } = useAuthModal()
+  const { user } = useAuthContext()
+  // Al reactivar cuenta: const { user, signOut, loading } = useAuthContext()
+  // const { isOpen, view, open, close } = useAuthModal()
   const [menu, setMenu] = useState({ route: '', open: false })
   const location = useLocation()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const menuOpen = menu.open && menu.route === location.key
   const navRef = useRef<HTMLElement>(null)
   const menuId = useId()
@@ -78,6 +81,7 @@ const NavBar = ({ static: isStatic = false }: NavBarProps) => {
     }
   }, [menuOpen, location.key])
 
+  /* Acceso de cuenta pausado temporalmente.
   const handleAccount = async () => {
     closeMenu()
     if (user) {
@@ -93,6 +97,8 @@ const NavBar = ({ static: isStatic = false }: NavBarProps) => {
       {loading ? 'Cargando…' : user ? 'Cerrar sesión' : 'Iniciar sesión'}
     </button>
   )
+
+  */
 
   return (
     <>
@@ -121,7 +127,7 @@ const NavBar = ({ static: isStatic = false }: NavBarProps) => {
               </li>
             ))}
             <li><NavLink to="/blog" className={({ isActive }) => isActive ? 'active-tab' : ''} onClick={() => { closeMenu(); replayScrollAnimation('blog') }}>Blog</NavLink></li>
-            <li className="nav-mobile-account">{accountButton('nav-cta-ghost')}</li>
+            {/* <li className="nav-mobile-account">{accountButton('nav-cta-ghost')}</li> */}
             <li className="nav-mobile-actions">
             {isHome || location.pathname === '/blog' ? (
             <Link to="/agendar-cita" className="nav-cta-fill" onClick={closeMenu}>Agenda tu sesión <span aria-hidden="true">→</span></Link>
@@ -131,7 +137,7 @@ const NavBar = ({ static: isStatic = false }: NavBarProps) => {
         )}
 
         <div className={`nav-right ${hasNavigation ? 'nav-right-collapsible' : ''}`}>
-          {accountButton(`nav-cta-ghost ${hasNavigation ? 'nav-desktop-account' : ''}`)}
+          {/* {accountButton(`nav-cta-ghost ${hasNavigation ? 'nav-desktop-account' : ''}`)} */}
           {isHome || location.pathname === '/blog' ? (
             <Link to="/agendar-cita" className="nav-cta-fill" onClick={closeMenu}>Agenda tu sesión <span aria-hidden="true">→</span></Link>
           ) : <Link to="/" className="btn-back" onClick={closeMenu}>← Volver al inicio</Link>}
@@ -144,7 +150,7 @@ const NavBar = ({ static: isStatic = false }: NavBarProps) => {
           </button>
         )}
       </nav>
-      <AuthModal isOpen={isOpen} onClose={close} initialView={view} />
+      {/* <AuthModal isOpen={isOpen} onClose={close} initialView={view} /> */}
     </>
   )
 }

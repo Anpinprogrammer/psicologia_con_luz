@@ -77,7 +77,7 @@
   .nav-links > li > a:not(.nav-cta-fill):not(.btn-back)::after { display: none; }
   .nav-links > li > a:is(:hover, .active-tab) { background: var(--lavLight); }
   .nav-mobile-account { display: block; margin-top: auto; padding-top: 24px; }
-  .nav-mobile-actions { display: block; padding-top: 4px; }
+  .nav-mobile-actions { display: block; margin-top: auto; padding-top: 24px; }
   .nav-mobile-account button, .nav-mobile-actions a { display: flex; width: 100%; min-height: 50px; }
 }
 @media (max-width: 768px) {
