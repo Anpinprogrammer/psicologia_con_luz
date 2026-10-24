@@ -64,14 +64,16 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container site-footer__container">
         <div className="site-footer__grid">
-          <div className="site-footer__brand">
+          <div className="site-footer__brand footer-brand">
             <Link className="site-footer__brand-link" to="/" aria-label="Psicología con luz — Inicio" onClick={() => {
               if (location.pathname === '/') {
                 replayScrollAnimation('home')
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }
             }}>
-              <img src="/img/logo_solo.png" alt="" width="42" height="46" />
+              <div className="footer-logo-icon-wrapper">
+                <img src="/img/logo_solo.png" alt="" width="48" height="48" />
+              </div>
               <span className="site-footer__brand-text" aria-hidden="true">
                 <span className="site-footer__brand-title">Psicología</span>
                 <span className="site-footer__brand-subtitle">con luz</span>

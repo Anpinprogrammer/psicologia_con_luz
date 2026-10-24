@@ -5,12 +5,15 @@ import { type DataTransmiting } from '../../types';
 
 
 
-const StepPersonal = ({ data, setData, errors } : DataTransmiting) => {
+type StepPersonalProps = DataTransmiting & { view?: 'all' | 'contact' | 'context'; reasonError?: string }
+
+const StepPersonal = ({ data, setData, errors, view = 'all', reasonError } : StepPersonalProps) => {
     
   const up = (k: string, v: string) => setData(p => ({ ...p, [k]: v }));
   return (
     <>
     <div className="step-grid-2 fade">
+      {view !== 'context' && <>
       <Field label="Nombre completo" req error={errors.nombre}>
         <input autoComplete="name" name="nombre" value={data.nombre} onChange={ev=>up("nombre",ev.target.value)}
           className={errors.nombre?"err":""} placeholder="María García"/>
@@ -31,6 +34,8 @@ const StepPersonal = ({ data, setData, errors } : DataTransmiting) => {
         <input autoComplete="tel" name="tel" type="tel" value={data.tel} onChange={ev=>up("tel",ev.target.value)}
           className={errors.tel?"err":""} placeholder="+57 300 000 0000"/>
       </Field>
+      </>}
+      {view !== 'contact' && <>
       <Field label="¿Cómo te enteraste de Psicología con luz?">
         <select value={data.fuente} onChange={ev=>up("fuente",ev.target.value)}>
           <option value="">Selecciona una opción</option>
@@ -39,10 +44,11 @@ const StepPersonal = ({ data, setData, errors } : DataTransmiting) => {
           ))}
         </select>
       </Field>
-      <Field label="¿Cuál es el motivo de tu consulta?" fullWidth>
+      <Field label="¿Cuál es el motivo de tu consulta?" fullWidth req={view === 'context'} error={reasonError}>
         <textarea value={data.reason} onChange={ev=>up("reason",ev.target.value)} rows={2}
-          placeholder="Cuéntanos brevemente qué te trae aquí, si lo deseas…"/>
+          placeholder={view === 'context' ? "Cuéntanos brevemente qué te trae aquí…" : "Cuéntanos brevemente qué te trae aquí, si lo deseas…"}/>
       </Field>
+      </>}
     </div>
     </>
   );

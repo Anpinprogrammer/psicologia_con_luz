@@ -78,3 +78,84 @@
 @media (prefers-reduced-motion: reduce) {
   .booking-form .prog-bar-line, .booking-form :is(input, select, textarea, button) { transition: none; }
 }
+
+/* Mobile substeps reveal a small amount of information at a time. */
+.booking-form .f-card-title { scroll-margin-top: 24px; }
+.booking-form .f-card-title:focus { outline: none; }
+@media (max-width: 768px) {
+  .booking-form .booking-form__step-view { animation: booking-substep-in 260ms ease-out backwards; }
+  .booking-form .field textarea { min-height: 110px; }
+  .booking-form .btn-next { white-space: normal; }
+}
+@keyframes booking-substep-in {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .booking-form .booking-form__step-view { animation: none; }
+}
+
+/* Mobile booking is a contained screen: only the fields scroll, actions stay put. */
+@media (max-width: 768px) {
+  body:has(.public-main--booking) { overflow: hidden; }
+  .public-main--booking { min-height: 0; }
+  .public-main--booking ~ .site-footer,
+  .public-main--booking ~ .whatsapp-float { display: none; }
+  .booking-form {
+    display: flex;
+    flex-direction: column;
+    height: var(--booking-viewport-height, 100dvh);
+    min-height: 0;
+    overflow: hidden;
+  }
+  .booking-form > .nav { flex-shrink: 0; }
+  .booking-form .progress-shell { flex-shrink: 0; padding: 12px 20px 0; }
+  .booking-form .progress-mobile { margin-bottom: 12px; padding: 6px 12px; }
+  .booking-form .f-main {
+    flex: 1;
+    min-height: 0;
+    padding: 12px 12px calc(16px + env(safe-area-inset-bottom, 0px));
+  }
+  .booking-form .f-card { min-height: 0; height: 100%; overflow: auto; }
+  .booking-form .f-card > form { display: flex; flex-direction: column; height: 100%; min-height: 0; overflow: hidden; }
+  .booking-form .f-card-head { flex-shrink: 0; padding: 16px 20px; gap: 8px; }
+  .booking-form .f-card-title { font-size: 1.5rem; }
+  .booking-form .f-card-sub { margin-top: 6px; font-size: .85rem; }
+  .booking-form .f-card-head-right { display: none; }
+  .booking-form .f-card-body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) transparent;
+    padding: 20px;
+    scroll-padding-block: 16px;
+  }
+  .booking-form .action-row {
+    position: static;
+    flex-shrink: 0;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: white;
+    box-shadow: 0 -4px 16px color-mix(in srgb, var(--dark) 4%, transparent);
+  }
+  .booking-form .action-left { display: block; }
+  .booking-form .action-left:not(:has(.btn-prev)),
+  .booking-form .action-hint { display: none; }
+  .booking-form .action-right { grid-column: -2 / -1; min-width: 0; }
+  .booking-form .action-row:not(:has(.btn-prev)) .action-right { grid-column: 1 / -1; }
+  .booking-form :is(.btn-prev, .btn-next) { min-height: 48px; padding: 10px 12px; font-size: .82rem; }
+  .booking-form .btn-prev { white-space: nowrap; }
+  .booking-form__error { padding: 16px 0 0; }
+}
+/* Small landscape screens / open keyboards prioritize the fields' scroll area. */
+@media (max-width: 768px) and (max-height: 500px) {
+  .booking-form .f-card-sub { display: none; }
+  .booking-form .f-card-head { padding-block: 10px; }
+  .booking-form .progress-shell { padding-top: 6px; }
+  .booking-form .progress-mobile { margin-bottom: 6px; }
+}

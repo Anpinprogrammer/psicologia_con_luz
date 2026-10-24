@@ -1,5 +1,6 @@
 import { Brain, Heart, Leaf, MapPin, Monitor } from 'lucide-react';
 import './styles/StepServicio.css'
+import './styles/PlanStep.css'
 import { type DataTransmiting } from '../../types';
 import { SERVICES } from '../../utils';
 
@@ -35,7 +36,8 @@ const zoneOptions = [
   { id: 'zona-norte', label: 'Zona norte', sub: 'Consultorio al norte de la ciudad' },
 ];
 
-const StepServicio = ({ data, setData, errors } : DataTransmiting) => {
+const PlanStep = ({ data, setData, errors } : DataTransmiting) => {
+  const selectedPlanId = data.svc
   const up = (k: string, v: string) => setData(p => ({ ...p, [k]: v }));
   const selectModality = (value: string) => {
     setData(p => ({
@@ -47,43 +49,28 @@ const StepServicio = ({ data, setData, errors } : DataTransmiting) => {
 
   return (
     <div className="fade">
-      {errors.svc&&<p className="svc-error">{errors.svc}</p>}
+      {errors.svc&&<p className="svc-error" id="plan-selection-error" role="alert">{errors.svc}</p>}
 
-      <div className="package-select-grid" aria-label="Selecciona un paquete">
-        {SERVICES.map(s=>(
-          <button
-            key={s.id}
-            type="button"
-            className={`package-option${data.svc===s.id && s.popular ? " selgold" : data.svc===s.id ?" sel":""}${s.popular?" popular":""} `}
-            onClick={()=>{up("svc",s.id) }}
-          >
-            {s.popular && (
-              <span className="package-popular">
-                Más elegido <span aria-hidden="true">★</span>
+      <fieldset className="plan-step__options" aria-describedby={errors.svc ? 'plan-selection-error' : undefined}>
+        <legend className="plan-step__sr-only">Selecciona tu plan</legend>
+        <div className="package-select-grid">
+          {SERVICES.map(s => (
+            <label key={s.id} className={`package-option plan-card${selectedPlanId === s.id ? ' plan-card--selected' : ''}${s.popular ? ' popular' : ''}`}>
+              <input className="plan-card__radio" type="radio" name="selectedPlanId" value={s.id}
+                checked={selectedPlanId === s.id} onChange={() => up('svc', s.id)}
+                aria-invalid={Boolean(errors.svc)} />
+              {s.popular && <span className="package-popular">Más elegido</span>}
+              <span className="package-option-head">
+                <span className="package-option-icon">{packageIcons[s.id as keyof typeof packageIcons]}</span>
+                <span className="package-option-badge">{packageBadges[s.id as keyof typeof packageBadges]}</span>
               </span>
-            )}
+              <span className="plan-card__title">{s.name}</span>
+              <span className="package-option-footer"><strong>{s.dur}</strong></span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
 
-            <div className="package-option-head">
-              <span className={`package-option-icon ${data.svc===s.id && s.popular ? " selgold" : data.svc===s.id ?" sel":""} ${s.popular ? 'gold': ''}`}>
-                {packageIcons[s.id as keyof typeof packageIcons]}
-              </span>
-              <span className={`package-option-badge${s.popular ? ' gold' : ''} ${data.svc===s.id && s.popular ? " selgold" : data.svc===s.id ?" sel":""}`}>
-                {packageBadges[s.id as keyof typeof packageBadges]}
-              </span>
-            </div>
-
-            <h3>{s.name}</h3>
-            
-
-            <div className="package-option-footer">
-              <span className={`package-check${s.popular ? ' gold' : ''} ${data.svc===s.id && s.popular ? " selgold" : data.svc===s.id ?" sel":""}`}>✓</span>
-              <strong>{s.dur}</strong>
-            </div>
-          </button>
-        ))}
-      </div>
-
-      
       <div className="step1-bottom">
         <div className="booking-mode-group">
           <p className="col-label">Modalidad<span className="req">*</span></p>
@@ -93,6 +80,7 @@ const StepServicio = ({ data, setData, errors } : DataTransmiting) => {
               <button
                 key={m.id}
                 type="button"
+                aria-pressed={data.modalidad === m.id}
                 className={`mod-pill${data.modalidad===m.id?" sel":""}`}
                 onClick={()=>selectModality(m.id)}
               >
@@ -115,6 +103,7 @@ const StepServicio = ({ data, setData, errors } : DataTransmiting) => {
                   <button
                     key={z.id}
                     type="button"
+                    aria-pressed={data.zona === z.id}
                     className={`zone-pill${data.zona===z.id?" sel":""}`}
                     onClick={()=>up("zona",z.id)}
                   >
@@ -130,4 +119,4 @@ const StepServicio = ({ data, setData, errors } : DataTransmiting) => {
   );
 }
 
-export default StepServicio
+export default PlanStep

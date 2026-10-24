@@ -1,0 +1,43 @@
+.plan-step__options { min-width: 0; margin: 0; padding: 0; border: 0; }
+.plan-step__sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.plan-card__radio { position: absolute; right: 12px; bottom: 16px; width: 20px; height: 20px; accent-color: var(--gold); cursor: pointer; }
+.plan-card__title { color: var(--dark); font: 500 1.15rem/1.35 var(--font-serif); }
+.plan-card--selected { border: 2px solid var(--gold); background: color-mix(in srgb, var(--gold) 4%, white); }
+.plan-card:focus-within { outline: 3px solid var(--lavender); outline-offset: 3px; }
+@media (max-width: 768px) {
+  /* Keep the single progress capsule above the card; no repeated step label. */
+  .booking-form .step-tag { display: none; }
+  .booking-form.booking-form--plan .f-card-head { padding: 20px; }
+  .booking-form.booking-form--plan .f-card-title { font-size: 1.5rem; }
+  .booking-form.booking-form--plan .f-card-sub { font-size: .85rem; margin-top: 8px; }
+  .booking-form.booking-form--plan .f-card-head-right { display: none; }
+  .booking-form.booking-form--plan .f-card-body { padding: 20px; }
+  .booking-form.booking-form--plan .package-select-grid { gap: 12px; }
+  .booking-form.booking-form--plan .plan-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 24px;
+    grid-template-rows: auto auto;
+    gap: 6px 12px;
+    height: auto;
+    min-height: 0;
+    padding: 16px;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--dark) 3%, transparent);
+    background: white;
+    transform: none;
+    transition: border-color 180ms ease, background-color 180ms ease;
+  }
+  .booking-form.booking-form--plan .plan-card--selected { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 4%, white); }
+  .booking-form.booking-form--plan .plan-card__radio { position: static; grid-column: 2; grid-row: 1 / span 3; align-self: center; width: 22px; height: 22px; margin: 0; }
+  .booking-form.booking-form--plan .package-option-head { display: block; grid-column: 1; margin: 0; }
+  .booking-form.booking-form--plan .package-option-icon, .booking-form.booking-form--plan .package-option-footer { display: none; }
+  .booking-form.booking-form--plan .package-option-badge { padding: 0; background: transparent; color: var(--amberDark); font-size: .72rem; letter-spacing: .02em; }
+  .booking-form.booking-form--plan .plan-card__title { grid-column: 1; font: 600 .95rem/1.45 var(--font-sans); }
+  .booking-form.booking-form--plan .package-popular { position: static; grid-column: 1; grid-row: 1; justify-self: start; padding: 3px 8px; margin-bottom: 2px; border-radius: var(--radius-pill); background: var(--amberLight); color: var(--amberDark); font-size: .65rem; box-shadow: none; transform: none; }
+  .booking-form.booking-form--plan .step1-bottom { margin-top: 24px; }
+
+}
+@media (prefers-reduced-motion: reduce) {
+  .booking-form.booking-form--plan .plan-card { transition: none; }
+}

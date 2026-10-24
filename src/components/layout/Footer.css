@@ -1,12 +1,38 @@
 /* Scoped selectors prevent the page footer's surface from leaking into cards. */
 .site-footer { padding: 72px 0 32px; border-top: 1px solid color-mix(in srgb, var(--gold) 20%, transparent); background: var(--dark); color: rgb(255 255 255 / .85); font-family: var(--font-sans); }
 .site-footer__grid { display: grid; grid-template-columns: 2fr 1.2fr 1.2fr 1fr; gap: 40px; align-items: start; margin-bottom: 40px; }
-.site-footer__brand-link { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 20px; text-decoration: none; border-radius: 8px; }
-.site-footer__brand-link img { display: block; width: 42px; height: 46px; object-fit: contain; }
+.footer-brand .site-footer__brand-link { display: flex; align-items: center; gap: 14px; width: fit-content; margin: 0; text-decoration: none; border-radius: 8px; }
+/* A halo behind the mark and alpha-based shadows reveal its dark silhouette. */
+.footer-brand .footer-logo-icon-wrapper {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+.footer-brand .footer-logo-icon-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(255 255 255 / .12) 0%, rgb(255 255 255 / 0) 70%);
+  pointer-events: none;
+}
+.footer-brand .footer-logo-icon-wrapper img {
+  display: block;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 12px rgb(255 255 255 / .35)) drop-shadow(0 0 4px rgb(212 139 56 / .5));
+}
 .site-footer__brand-text { display: flex; flex-direction: column; justify-content: center; gap: 3px; font-family: var(--font-serif); }
-.site-footer__brand-title { color: #fff; font-size: 1.5rem; font-weight: 500; line-height: 1.1; }
-.site-footer__brand-subtitle { color: #FCE7AF; font-size: 1.15rem; font-style: italic; font-weight: 600; line-height: 1.1; }
-.site-footer__brand > p { max-width: 310px; color: rgb(255 255 255 / .7); font-size: .92rem; line-height: 1.75; }
+.footer-brand .site-footer__brand-title { color: #fff; font-size: 1.5rem; font-weight: 600; line-height: 1.1; }
+.footer-brand .site-footer__brand-subtitle { color: #FACC15; font-size: 1.25rem; font-style: italic; font-weight: 600; line-height: 1.1; opacity: 1; filter: drop-shadow(0 2px 8px rgb(245 158 11 / .25)); }
+.footer-brand > p { margin: 16px 0 0; max-width: 280px; color: rgb(255 255 255 / .7); font-size: .92rem; line-height: 1.75; }
 .site-footer__column { min-width: 0; }
 .site-footer__column h2 { margin: 0 0 20px; color: var(--amberLight); font: 700 .75rem/1.5 var(--font-sans); letter-spacing: .14em; text-transform: uppercase; }
 .site-footer__column ul { list-style: none; display: flex; flex-direction: column; gap: 8px; padding: 0; margin: 0; }

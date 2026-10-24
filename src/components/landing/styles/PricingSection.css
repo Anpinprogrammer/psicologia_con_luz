@@ -104,3 +104,49 @@
 @media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
   .pricing-card--featured:hover { translate: 0 -8px; }
 }
+
+/* Mobile carousel: one complete plan, with circular navigation handled in React. */
+.pricing-section__carousel { position: relative; }
+.pricing-section__arrow, .pricing-section__pagination { display: none; }
+@media (max-width: 768px) {
+  .pricing-section__carousel { max-width: 480px; margin-inline: auto; padding-inline: 44px; }
+  .pricing-section__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; touch-action: pan-y pinch-zoom; }
+  .pricing-card:not(.pricing-card--current) { display: none; }
+  .pricing-card { padding: 18px 14px; border-radius: 16px; }
+  .pricing-card__ribbon-slot { min-height: 26px; margin-bottom: 12px; }
+  .pricing-card__ribbon { padding: 5px 9px; font-size: .68rem; }
+  .pricing-card__topline { gap: 8px; margin-bottom: 14px; }
+  .pricing-card__mark { width: 36px; height: 36px; }
+  .pricing-card__mark svg { width: 24px; height: 24px; }
+  .pricing-card__sessions { padding: 5px 8px; font-size: .62rem; }
+  .pricing-card__header h3 { margin-bottom: 10px; font-size: 1.2rem; }
+  .pricing-card__header p { font-size: .84rem; line-height: 1.55; }
+  .pricing-card__benefits { gap: 8px; margin: 16px 0; padding-top: 14px; }
+  .pricing-card__benefits li { gap: 7px; font-size: .8rem; line-height: 1.5; }
+  .pricing-card__benefits svg { width: 17px; height: 17px; }
+  .pricing-card__cta { min-height: 44px; padding: 10px 8px; gap: 6px; font-size: .8rem; }
+  .pricing-card:hover { translate: none; }
+  .pricing-section__arrow {
+    position: absolute; top: 50%; z-index: 3; transform: translateY(-50%);
+    display: flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; padding: 0;
+    border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent); border-radius: 50%;
+    background: white; color: var(--amberDark); cursor: pointer;
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--dark) 10%, transparent);
+    transition: background-color 200ms ease;
+  }
+  .pricing-section__arrow--prev { left: -8px; }
+  .pricing-section__arrow--next { right: -8px; }
+  .pricing-section__arrow svg { width: 22px; height: 22px; }
+  .pricing-section__arrow:hover { background: var(--amberLight); }
+  .pricing-section__pagination { display: flex; flex-direction: column; align-items: center; margin-top: 16px; }
+  .pricing-section__dots { display: flex; justify-content: center; gap: 2px; }
+  .pricing-section__dots button { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: transparent; cursor: pointer; }
+  .pricing-section__dots span { width: 7px; height: 7px; border-radius: 50%; background: var(--border); }
+  .pricing-section__dots button[aria-pressed="true"] span { background: var(--gold); }
+  .pricing-section__pagination p { color: var(--mid); font: 400 .8rem/1.6 var(--font-sans); text-align: center; }
+  .pricing-section__carousel button:focus-visible, .pricing-section__dots button:focus-visible { outline: 3px solid var(--lavender); outline-offset: 3px; }
+}
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  .pricing-section__arrow { transition: none; }
+}
